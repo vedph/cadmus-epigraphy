@@ -1,0 +1,38 @@
+﻿{
+  "facets": [
+    {
+      "typeId": "it.vedph.epigraphy.epi-support",
+      "name": "forms",
+      "description": "Epigraphic support.",
+      "colorKey": "31AB54",
+      "groupKey": "inscriptions",
+      "sortKey": "b"
+    },
+    {
+      "typeId": "it.vedph.epigraphy.epi-writing",
+      "name": "forms",
+      "description": "Epigraphic writing.",
+      "colorKey": "31AB54",
+      "groupKey": "inscriptions",
+      "sortKey": "c"
+    }
+  ],
+  "seed": {
+    "options": {
+      "seed": 1,
+      "baseTextPartTypeId": "it.vedph.token-text",
+      "users": [ "zeus" ],
+      "partRoles": [],
+      "fragmentRoles": []
+    },
+    "partSeeders": [
+      {
+        "id": "seed.it.vedph.epigraphy.epi-support"
+      },
+      {
+        "id": "seed.it.vedph.epigraphy.epi-writing"
+      }
+    ],
+    "fragmentSeeders": []
+  }
+}
