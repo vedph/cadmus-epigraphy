@@ -1,6 +1,6 @@
 ﻿using Cadmus.Core;
 using Cadmus.Epigraphy.Parts;
-using Cadmus.Seed.Gisarc.Parts;
+using Cadmus.Seed.Epigraphy.Parts;
 using Fusi.Tools.Config;
 using System;
 using System.Reflection;

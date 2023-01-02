@@ -5,6 +5,7 @@
     - [EpiWritingPart](#epiwritingpart)
     - [EpiSupportPart](#episupportpart)
     - [EpiLigaturesLayerFragment](#epiligatureslayerfragment)
+  - [History](#history)
 
 These libraries include some essential epigraphic components for Cadmus. The components will be reused in a wider context.
 
@@ -98,3 +99,13 @@ Tag: `fr.it.vedph.epigraphy.ligatures`.
 - `types` (string[], thesaurus: `epi-ligature-types`)
 - `groupId` (string)
 - `note` (string)
+
+## History
+
+### 0.0.2
+
+- namespace fixes.
+
+### 0.0.1
+
+- initial release.

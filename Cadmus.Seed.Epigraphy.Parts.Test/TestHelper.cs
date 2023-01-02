@@ -9,7 +9,7 @@ using SimpleInjector;
 using Cadmus.Epigraphy.Parts;
 using Xunit;
 using Fusi.Microsoft.Extensions.Configuration.InMemoryJson;
-using Cadmus.Seed.Gisarc.Parts;
+using Cadmus.Seed.Epigraphy.Parts;
 
 namespace Cadmus.Seed.Epigraphy.Parts.Test;
 

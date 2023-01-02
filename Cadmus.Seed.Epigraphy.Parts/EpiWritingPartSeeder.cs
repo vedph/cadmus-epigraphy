@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Cadmus.Seed.Gisarc.Parts
+namespace Cadmus.Seed.Epigraphy.Parts
 {
     /// <summary>
     /// Seeder for <see cref="EpiWritingPart"/>.

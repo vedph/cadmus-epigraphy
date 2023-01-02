@@ -5,7 +5,7 @@ using Cadmus.Mat.Bricks;
 using Fusi.Tools.Config;
 using System;
 
-namespace Cadmus.Seed.Gisarc.Parts;
+namespace Cadmus.Seed.Epigraphy.Parts;
 
 /// <summary>
 /// Seeder for <see cref="EpiSupportPart"/>.

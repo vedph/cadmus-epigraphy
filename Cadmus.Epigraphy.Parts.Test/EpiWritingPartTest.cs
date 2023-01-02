@@ -1,6 +1,6 @@
 ﻿using Cadmus.Core;
 using Cadmus.Refs.Bricks;
-using Cadmus.Seed.Gisarc.Parts;
+using Cadmus.Seed.Epigraphy.Parts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
