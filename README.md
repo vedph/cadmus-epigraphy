@@ -48,6 +48,8 @@ For instance, an inscription item might include parts like:
 
 ### EpiWritingPart
 
+Tag: `it.vedph.epigraphy.writing`.
+
 - `system` (string, thesaurus: `epi-writing-systems`, usually ISO 15924 lowercase)
 - `type` (string, thesaurus: `epi-writing-types`)
 - `technique` (string, thesaurus: `epi-writing-techniques`)
@@ -66,6 +68,8 @@ For instance, an inscription item might include parts like:
 - `metres` (string[], thesaurus: `epi-writing-metres`)
 
 ### EpiSupportPart
+
+Tag: `it.vedph.epigraphy.support`.
 
 - `material`\* (string, thesaurus: `epi-support-materials`)
 - `originalFn` (string, thesaurus: `epi-support-functions`)
@@ -86,6 +90,8 @@ For instance, an inscription item might include parts like:
 - `lastSeen` (date)
 
 ### EpiLigaturesLayerFragment
+
+Tag: `fr.it.vedph.epigraphy.ligatures`.
 
 - `location`\* (string)
 - `eid` (string)
