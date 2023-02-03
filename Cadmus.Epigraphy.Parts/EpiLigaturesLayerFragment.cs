@@ -1,6 +1,6 @@
 ﻿using Cadmus.Core;
 using Cadmus.Core.Layers;
-using Fusi.Tools.Config;
+using Fusi.Tools.Configuration;
 using System.Collections.Generic;
 using System.Text;
 

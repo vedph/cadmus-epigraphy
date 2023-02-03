@@ -2,7 +2,7 @@
 using Cadmus.Core;
 using Cadmus.Epigraphy.Parts;
 using Cadmus.Mat.Bricks;
-using Fusi.Tools.Config;
+using Fusi.Tools.Configuration;
 using System;
 
 namespace Cadmus.Seed.Epigraphy.Parts;

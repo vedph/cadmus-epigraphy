@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Text;
 using Cadmus.Core;
 using Cadmus.Mat.Bricks;
-using Fusi.Tools.Config;
+using Fusi.Tools.Configuration;
 
 namespace Cadmus.Epigraphy.Parts;
 

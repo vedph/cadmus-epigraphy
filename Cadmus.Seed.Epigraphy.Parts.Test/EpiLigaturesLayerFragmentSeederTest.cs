@@ -1,7 +1,7 @@
 ﻿using Cadmus.Core;
 using Cadmus.Core.Layers;
 using Cadmus.Epigraphy.Parts;
-using Fusi.Tools.Config;
+using Fusi.Tools.Configuration;
 using System;
 using System.Linq;
 using System.Reflection;

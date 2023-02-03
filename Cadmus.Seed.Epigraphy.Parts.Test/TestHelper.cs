@@ -1,15 +1,13 @@
 ﻿using Cadmus.Core.Config;
 using Cadmus.Core;
-using Microsoft.Extensions.Configuration;
 using System;
 using System.IO;
 using System.Reflection;
 using System.Text;
-using SimpleInjector;
 using Cadmus.Epigraphy.Parts;
 using Xunit;
 using Fusi.Microsoft.Extensions.Configuration.InMemoryJson;
-using Cadmus.Seed.Epigraphy.Parts;
+using Microsoft.Extensions.Hosting;
 
 namespace Cadmus.Seed.Epigraphy.Parts.Test;
 
@@ -26,7 +24,7 @@ static internal class TestHelper
         return reader.ReadToEnd();
     }
 
-    static public PartSeederFactory GetFactory()
+    private static IHost GetHost(string config)
     {
         // map
         TagAttributeToTypeMap map = new();
@@ -38,23 +36,24 @@ static internal class TestHelper
             typeof(EpiSupportPart).Assembly
         });
 
-        // container
-        Container container = new();
-        PartSeederFactory.ConfigureServices(
-            container,
-            new StandardPartTypeProvider(map),
-            new[]
-            {
-                // Cadmus.Seed.Epigraphy.Parts
-                typeof(EpiSupportPartSeeder).Assembly
-            });
+        return new HostBuilder().ConfigureServices((hostContext, services) =>
+        {
+            PartSeederFactory.ConfigureServices(services,
+                new StandardPartTypeProvider(map),
+                new[]
+                {
+                    // Cadmus.Seed.Epigraphy.Parts
+                    typeof(EpiSupportPartSeeder).Assembly
+                });
+            })
+            // extension method from Fusi library
+            .AddInMemoryJson(config)
+            .Build();
+    }
 
-        // config
-        IConfigurationBuilder builder = new ConfigurationBuilder()
-            .AddInMemoryJson(LoadResourceText("SeedConfig.json"));
-        var configuration = builder.Build();
-
-        return new PartSeederFactory(container, configuration);
+    static public PartSeederFactory GetFactory()
+    {
+        return new PartSeederFactory(GetHost(LoadResourceText("SeedConfig.json")));
     }
 
     static public void AssertPartMetadata(IPart part)

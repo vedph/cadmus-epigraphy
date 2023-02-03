@@ -1,7 +1,7 @@
 ﻿using Cadmus.Core;
 using Cadmus.Epigraphy.Parts;
 using Cadmus.Seed.Epigraphy.Parts;
-using Fusi.Tools.Config;
+using Fusi.Tools.Configuration;
 using System;
 using System.Reflection;
 using Xunit;

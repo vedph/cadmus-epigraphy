@@ -2,7 +2,7 @@
 using Cadmus.Core;
 using Cadmus.Epigraphy.Parts;
 using Cadmus.Refs.Bricks;
-using Fusi.Tools.Config;
+using Fusi.Tools.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
