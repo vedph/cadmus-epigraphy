@@ -90,6 +90,21 @@ Tag: `it.vedph.epigraphy.support`.
 - `state` (string, thesaurus: `epi-support-states`)
 - `lastSeen` (date)
 
+### EpiFormulaPatternsPart
+
+Tag: `it.vedph.epigraphy.formula-patterns`.
+
+- `patterns` (`EpiFormulaPattern[]`):
+  - `eid` (string)
+  - `language`\* (string)
+  - `tag` (string)
+  - `tokens` (`EpiFormulaToken[]`):
+    - `tags` (string[])
+    - `values` (string[])
+    - `isOptional` (bool)
+    - `isPlaceholder` (bool)
+    - `note` (string)
+
 ### EpiLigaturesLayerFragment
 
 Tag: `fr.it.vedph.epigraphy.ligatures`.
@@ -102,6 +117,9 @@ Tag: `fr.it.vedph.epigraphy.ligatures`.
 
 ## History
 
+### 1.0.1
+
+- 2023-03-08: added epigraphic formulas part.
 - 2023-03-02: updated test projects packages.
 
 ### 1.0.0
