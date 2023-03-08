@@ -4,8 +4,13 @@
   - [Models](#models)
     - [EpiWritingPart](#epiwritingpart)
     - [EpiSupportPart](#episupportpart)
+    - [EpiFormulaPatternsPart](#epiformulapatternspart)
     - [EpiLigaturesLayerFragment](#epiligatureslayerfragment)
   - [History](#history)
+    - [1.0.1](#101)
+    - [1.0.0](#100)
+    - [0.0.2](#002)
+    - [0.0.1](#001)
 
 These libraries include some essential epigraphic components for Cadmus. The components will be reused in a wider context.
 
