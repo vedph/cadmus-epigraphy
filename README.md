@@ -50,6 +50,8 @@ For instance, an inscription item might include parts like:
 - layer of [EpiLigaturesLayerFragment](#epiligatureslayerfragment)'s: annotate ligatures across 2 or more letters.
 - layer of `ChronologyLayerFragment`'s: annotate dates on specific dateable expressions.
 
+Also, you might want to add epigraphic formula items, having an [EpiFormulaPatternsPart](#epiformulapatternspart) to describe its patterns, and other generic parts for its metadata, categories, keywords, datation, etc.
+
 ## Models
 
 ### EpiWritingPart
@@ -101,10 +103,10 @@ Tag: `it.vedph.epigraphy.formula-patterns`.
 
 - `patterns` (`EpiFormulaPattern[]`):
   - `eid` (string)
-  - `language`\* (string)
-  - `tag` (string)
+  - `language`\* (string; `epi-formula-pattern-languages`)
+  - `tag` (string; `epi-formula-pattern-tags`)
   - `tokens` (`EpiFormulaToken[]`):
-    - `tags` (string[])
+    - `tags` (string[]; `epi-formula-token-tags`)
     - `values` (string[])
     - `isOptional` (bool)
     - `isPlaceholder` (bool)
