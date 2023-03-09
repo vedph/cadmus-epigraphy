@@ -124,6 +124,10 @@ Tag: `fr.it.vedph.epigraphy.ligatures`.
 
 ## History
 
+### 1.0.2
+
+- 2023-03-09: fix to formula token seeder.
+
 ### 1.0.1
 
 - 2023-03-08: added epigraphic formulas part.

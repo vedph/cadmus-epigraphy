@@ -34,9 +34,7 @@ public class EpiFormulaPatternsPartSeeder : PartSeederBase
                 },
                 IsOptional = f.Random.Bool(0.25f),
                 IsPlaceholder = placeholder,
-                Values = placeholder
-                    ? new List<string> { $"${f.Lorem.Word()}" }
-                    : new List<string> { f.Lorem.Word() },
+                Values = new List<string> { f.Lorem.Word() },
                 Note = f.Random.Bool(0.25f)? f.Lorem.Sentence() : ""
             });
         }
