@@ -124,6 +124,8 @@ Tag: `fr.it.vedph.epigraphy.ligatures`.
 
 ## History
 
+- 2023-03-21: fix to writing part pins.
+
 ### 1.0.2
 
 - 2023-03-09: fix to formula token seeder.
