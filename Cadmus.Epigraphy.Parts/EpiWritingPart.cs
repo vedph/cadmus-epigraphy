@@ -155,7 +155,7 @@ public sealed class EpiWritingPart : PartBase
              new DataPinDefinition(DataPinValueType.String,
                 "fig-type",
                 "The main figurative type."),
-             new DataPinDefinition(DataPinValueType.String,
+             new DataPinDefinition(DataPinValueType.Boolean,
                 "poetic",
                 "True if contains poetic text."),
              new DataPinDefinition(DataPinValueType.String,

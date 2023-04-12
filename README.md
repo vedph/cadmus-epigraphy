@@ -106,7 +106,7 @@ Tag: `it.vedph.epigraphy.formula-patterns`.
   - `language`\* (string; `epi-formula-pattern-languages`)
   - `tag` (string; `epi-formula-pattern-tags`)
   - `tokens` (`EpiFormulaToken[]`):
-    - `tags` (string[]; `epi-formula-token-tags`)
+    - `tags` (string[]; `epi-formula-token-tags`, hierarchical)
     - `values` (string[])
     - `isOptional` (bool)
     - `isPlaceholder` (bool)
