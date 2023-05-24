@@ -7,6 +7,7 @@
     - [EpiFormulaPatternsPart](#epiformulapatternspart)
     - [EpiLigaturesLayerFragment](#epiligatureslayerfragment)
   - [History](#history)
+    - [2.0.0](#200)
     - [1.0.1](#101)
     - [1.0.0](#100)
     - [0.0.2](#002)
@@ -124,6 +125,9 @@ Tag: `fr.it.vedph.epigraphy.ligatures`.
 
 ## History
 
+### 2.0.0
+
+- 2023-05-24: updated packages (breaking change in general parts introducing [AssertedCompositeId](https://github.com/vedph/cadmus-bricks-shell/blob/master/projects/myrmidon/cadmus-refs-asserted-ids/README.md#asserted-composite-id)).
 - 2023-03-21: fix to writing part pins.
 
 ### 1.0.2
