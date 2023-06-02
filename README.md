@@ -8,6 +8,7 @@
     - [EpiLigaturesLayerFragment](#epiligatureslayerfragment)
   - [History](#history)
     - [2.0.0](#200)
+    - [1.0.2](#102)
     - [1.0.1](#101)
     - [1.0.0](#100)
     - [0.0.2](#002)
@@ -124,6 +125,8 @@ Tag: `fr.it.vedph.epigraphy.ligatures`.
 - `note` (string)
 
 ## History
+
+- 2023-06-02: updated test packages.
 
 ### 2.0.0
 
