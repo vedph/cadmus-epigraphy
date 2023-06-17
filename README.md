@@ -7,6 +7,7 @@
     - [EpiFormulaPatternsPart](#epiformulapatternspart)
     - [EpiLigaturesLayerFragment](#epiligatureslayerfragment)
   - [History](#history)
+    - [2.0.1](#201)
     - [2.0.0](#200)
     - [1.0.2](#102)
     - [1.0.1](#101)
@@ -126,6 +127,9 @@ Tag: `fr.it.vedph.epigraphy.ligatures`.
 
 ## History
 
+### 2.0.1
+
+- 2023-06-17: updated packages.
 - 2023-06-02: updated test packages.
 
 ### 2.0.0
