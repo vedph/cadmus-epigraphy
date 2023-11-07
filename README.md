@@ -129,6 +129,10 @@ Tag: `fr.it.vedph.epigraphy.ligatures`.
 
 ## History
 
+### 2.0.4
+
+- 2023-11-07: updated packages.
+
 ### 2.0.3
 
 - 2023-09-04: updated packages.
