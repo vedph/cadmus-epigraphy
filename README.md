@@ -7,6 +7,8 @@
     - [EpiFormulaPatternsPart](#epiformulapatternspart)
     - [EpiLigaturesLayerFragment](#epiligatureslayerfragment)
   - [History](#history)
+    - [3.0.0](#300)
+    - [2.0.4](#204)
     - [2.0.3](#203)
     - [2.0.2](#202)
     - [2.0.1](#201)
@@ -128,6 +130,10 @@ Tag: `fr.it.vedph.epigraphy.ligatures`.
 - `note` (string)
 
 ## History
+
+### 3.0.0
+
+- 2023-11-18: ⚠️ Upgraded to .NET 8.
 
 ### 2.0.4
 
