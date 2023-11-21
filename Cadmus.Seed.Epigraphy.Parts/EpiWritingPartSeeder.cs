@@ -81,8 +81,7 @@ namespace Cadmus.Seed.Epigraphy.Parts
         public override IPart? GetPart(IItem item, string? roleId,
             PartSeederFactory? factory)
         {
-            if (item == null)
-                throw new ArgumentNullException(nameof(item));
+            ArgumentNullException.ThrowIfNull(item);
 
             EpiWritingPart part = new Faker<EpiWritingPart>()
                .RuleFor(p => p.System, f => f.PickRandom("latn", "grek"))

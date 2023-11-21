@@ -42,10 +42,8 @@ public sealed class EpiLigaturesLayerFragmentSeeder : FragmentSeederBase,
     public override ITextLayerFragment GetFragment(
         IItem item, string location, string baseText)
     {
-        if (location == null)
-            throw new ArgumentNullException(nameof(location));
-        if (baseText == null)
-            throw new ArgumentNullException(nameof(baseText));
+        ArgumentNullException.ThrowIfNull(location);
+        ArgumentNullException.ThrowIfNull(baseText);
 
         IList<string> types = _options?.Types ?? new List<string>(
             EpiLigaturesLayerFragmentSeederOptions.GetDefaultTypes());

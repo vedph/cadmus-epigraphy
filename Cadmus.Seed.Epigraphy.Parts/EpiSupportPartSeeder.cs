@@ -27,7 +27,7 @@ public sealed class EpiSupportPartSeeder : PartSeederBase
     public override IPart? GetPart(IItem item, string? roleId,
         PartSeederFactory? factory)
     {
-        if (item == null) throw new ArgumentNullException(nameof(item));
+        ArgumentNullException.ThrowIfNull(item);
 
         string[] fnn = new[] { "street", "house" };
 

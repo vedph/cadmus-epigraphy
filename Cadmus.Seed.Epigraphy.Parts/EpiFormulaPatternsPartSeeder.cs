@@ -69,7 +69,7 @@ public class EpiFormulaPatternsPartSeeder : PartSeederBase
     public override IPart? GetPart(IItem item, string? roleId,
         PartSeederFactory? factory)
     {
-        if (item == null) throw new ArgumentNullException(nameof(item));
+        ArgumentNullException.ThrowIfNull(item);
 
         EpiFormulaPatternsPart part = new Faker<EpiFormulaPatternsPart>()
             .RuleFor(p => p.Patterns, f => GetPatterns(f.Random.Number(1, 3), f))
