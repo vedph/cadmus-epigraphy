@@ -1,24 +1,11 @@
 # Cadmus Epigraphy
 
-- [Cadmus Epigraphy](#cadmus-epigraphy)
-  - [Models](#models)
-    - [EpiWritingPart](#epiwritingpart)
-    - [EpiSupportPart](#episupportpart)
-    - [EpiFormulaPatternsPart](#epiformulapatternspart)
-    - [EpiLigaturesLayerFragment](#epiligatureslayerfragment)
-  - [History](#history)
-    - [3.0.1](#301)
-    - [3.0.0](#300)
-    - [2.0.4](#204)
-    - [2.0.3](#203)
-    - [2.0.2](#202)
-    - [2.0.1](#201)
-    - [2.0.0](#200)
-    - [1.0.2](#102)
-    - [1.0.1](#101)
-    - [1.0.0](#100)
-    - [0.0.2](#002)
-    - [0.0.1](#001)
+- parts:
+  - [writing](docs/epi-writing.md)
+  - [support](docs/epi-support.md)
+  - [formula patterns](docs/epi-formula-patterns.md)
+- fragments:
+  - [ligatures](docs/fr.epi-ligatures.md)
 
 These libraries include some essential epigraphic components for Cadmus. The components will be reused in a wider context.
 
@@ -31,8 +18,8 @@ For instance, an inscription item might include parts like:
 - `AssertedLocationsPart`: geographical location(s).
 - `AssertedToponymsPart`: toponym(s).
 - `HistoricalDatePart`: date.
-- [EpiSupportPart](#episupportpart)
-- [EpiWritingPart](#epiwritingpart)
+- [EpiSupportPart](docs/epi-support.md)
+- [EpiWritingPart](docs/epi-writing.md)
 
 (b) classification:
 
@@ -55,82 +42,14 @@ For instance, an inscription item might include parts like:
 - layer of `ApparatusLayerFragment`'s: critical apparatus.
 - layer of `OrthographyLayerFragment`'s: annotate and categorize linguistic phenomena reflected in orthography.
 - layer of `CommentLayerFragment`'s: comment specific words of the text.
-- layer of [EpiLigaturesLayerFragment](#epiligatureslayerfragment)'s: annotate ligatures across 2 or more letters.
+- layer of [EpiLigaturesLayerFragment](docs/fr.epi-ligatures.md)'s: annotate ligatures across 2 or more letters.
 - layer of `ChronologyLayerFragment`'s: annotate dates on specific dateable expressions.
 
-Also, you might want to add epigraphic formula items, having an [EpiFormulaPatternsPart](#epiformulapatternspart) to describe its patterns, and other generic parts for its metadata, categories, keywords, datation, etc.
-
-## Models
-
-### EpiWritingPart
-
-Tag: `it.vedph.epigraphy.writing`.
-
-- `system` (string, thesaurus: `epi-writing-systems`, usually ISO 15924 lowercase)
-- `type` (string, thesaurus: `epi-writing-types`)
-- `technique` (string, thesaurus: `epi-writing-techniques`)
-- `tool` (string, thesaurus: `epi-writing-tools`)
-- `frameType` (string, thesaurus: `epi-writing-frame-types`)
-- `counts` (DecoratedCount[]):
-  - `id`\* (string, thesaurus: `decorated-count-ids`)
-  - `tag` (string, thesaurus: `decorated-count-tags`)
-  - `value`\* (number)
-  - `note` (string)
-- `figType` (string, thesaurus: `epi-writing-fig-types`)
-- `figFeatures` (string[], thesaurus: `epi-writing-fig-features`)
-- `scriptFeatures` (string[], thesaurus, `epi-writing-script-features`)
-- `languages` (string[], thesaurus: `epi-writing-languages`, usually ISO 639-3)
-- `hasPoetry` (boolean)
-- `metres` (string[], thesaurus: `epi-writing-metres`)
-
-### EpiSupportPart
-
-Tag: `it.vedph.epigraphy.support`.
-
-- `material`\* (string, thesaurus: `epi-support-materials`)
-- `originalFn` (string, thesaurus: `epi-support-functions`)
-- `currentFn` (string, thesaurus: `epi-support-functions`)
-- `objectType` (string, thesaurus: `epi-support-object-types`)
-- `supportType` (string, thesaurus: `epi-support-types`)
-- `indoor` (boolean)
-- `size` (`PhysicalSize`):
-  - `tag` (string, thesaurus: `physical-size-tags`)
-  - `w` (PhysicalSize):
-    - `value`\* (number)
-    - `unit`\* (string, thesaurus: `physical-size-units`)
-    - `tag` (string, thesaurus: `physical-size-dim-tags`)
-  - `h` (PhysicalSize)
-  - `d` (PhysicalSize)
-  - `note` (string)
-- `state` (string, thesaurus: `epi-support-states`)
-- `lastSeen` (date)
-
-### EpiFormulaPatternsPart
-
-Tag: `it.vedph.epigraphy.formula-patterns`.
-
-- `patterns` (`EpiFormulaPattern[]`):
-  - `eid` (string)
-  - `language`\* (string; `epi-formula-pattern-languages`)
-  - `tag` (string; `epi-formula-pattern-tags`)
-  - `tokens` (`EpiFormulaToken[]`):
-    - `tags` (string[]; `epi-formula-token-tags`, hierarchical)
-    - `values` (string[])
-    - `isOptional` (bool)
-    - `isPlaceholder` (bool)
-    - `note` (string)
-
-### EpiLigaturesLayerFragment
-
-Tag: `fr.it.vedph.epigraphy.ligatures`.
-
-- `location`\* (string)
-- `eid` (string)
-- `types` (string[], thesaurus: `epi-ligature-types`)
-- `groupId` (string)
-- `note` (string)
+Also, you might want to add epigraphic formula items, having an [EpiFormulaPatternsPart](docs/epi-formula-patterns.md) to describe its patterns, and other generic parts for its metadata, categories, keywords, datation, etc.
 
 ## History
+
+- 2024-02-01: updated documentation.
 
 ### 3.0.1
 
