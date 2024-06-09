@@ -49,6 +49,10 @@ Also, you might want to add epigraphic formula items, having an [EpiFormulaPatte
 
 ## History
 
+### 3.0.4
+
+- 2024-06-09: updated packages.
+
 ### 3.0.3
 
 - 2024-05-24: updated packages.
