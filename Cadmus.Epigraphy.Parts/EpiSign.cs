@@ -1,8 +1,6 @@
 ﻿using Cadmus.Mat.Bricks;
-using Fusi.Tools.Data;
 using System.Collections.Generic;
 using System.Text;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Cadmus.Epigraphy.Parts;
 
