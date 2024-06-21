@@ -4,6 +4,7 @@
   - [writing](docs/epi-writing.md)
   - [support](docs/epi-support.md)
   - [formula patterns](docs/epi-formula-patterns.md)
+  - [signs](docs/epi-signs.md)) 
 - fragments:
   - [ligatures](docs/fr.epi-ligatures.md)
 
