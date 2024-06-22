@@ -21,7 +21,9 @@ For instance, an inscription item might include parts like:
 - `AssertedToponymsPart`: toponym(s).
 - `HistoricalDatePart`: date.
 - [EpiSupportPart](docs/epi-support.md)
+- [EpiSupportFrrPart](docs/epi-support-frr.md)
 - [EpiWritingPart](docs/epi-writing.md)
+- [EpiSignsPart](docs/epi-signs.md)]
 
 (b) classification:
 
@@ -50,6 +52,8 @@ For instance, an inscription item might include parts like:
 Also, you might want to add epigraphic formula items, having an [EpiFormulaPatternsPart](docs/epi-formula-patterns.md) to describe its patterns, and other generic parts for its metadata, categories, keywords, datation, etc.
 
 ## History
+
+### 3.0.5
 
 - 2024-06-22: added new models for writing signs and support fragments.
 
