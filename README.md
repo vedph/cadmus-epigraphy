@@ -5,6 +5,7 @@
   - [support](docs/epi-support.md)
   - [formula patterns](docs/epi-formula-patterns.md)
   - [signs](docs/epi-signs.md)) 
+  - [support fragments](docs/epi-support-frr.md) 
 - fragments:
   - [ligatures](docs/fr.epi-ligatures.md)
 
@@ -49,6 +50,8 @@ For instance, an inscription item might include parts like:
 Also, you might want to add epigraphic formula items, having an [EpiFormulaPatternsPart](docs/epi-formula-patterns.md) to describe its patterns, and other generic parts for its metadata, categories, keywords, datation, etc.
 
 ## History
+
+- 2024-06-22: added new models for writing signs and support fragments.
 
 ### 3.0.4
 
