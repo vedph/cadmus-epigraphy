@@ -1,5 +1,4 @@
-﻿using Cadmus.Mat.Bricks;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 
 namespace Cadmus.Epigraphy.Parts;
@@ -43,12 +42,15 @@ public class EpiSign
     public string? Description { get; set; }
 
     /// <summary>
-    /// Gets or sets the sizes keyed by measured element: you can add as many
-    /// sizes as you want for each specific trait you are measuring.For instance,
-    /// a size for vertical ascender, another size for total width, etc.Keys
-    /// are either free or come from a thesaurus when defined.
+    /// Gets or sets measurements done on the sign, either as a whole or on any
+    /// of its parts: you can add as many measurements as you want for each
+    /// specific trait you are measuring. For instance, one for total width,
+    /// another for vertical ascender, etc. Names are either freely entered or
+    /// come from a thesaurus, and can also be used multiple times if referring
+    /// to multiple parts of the same type when they have variable measurements
+    /// and you are not interested in differentiating them.
     /// </summary>
-    public Dictionary<string, PhysicalSize>? Sizes { get; set; }
+    public List<PhysicalMeasurement>? Measurements { get; set; }
 
     /// <summary>
     /// Converts to string.
@@ -63,8 +65,8 @@ public class EpiSign
         if (Features?.Count > 0)
             sb.Append(": ").AppendJoin(", ", Features);
 
-        if (Sizes?.Count > 0)
-            sb.Append($" - sizes: {Sizes.Count}");
+        if (Measurements?.Count > 0)
+            sb.Append($" - measurements: {Measurements.Count}");
 
         return sb.ToString();
     }

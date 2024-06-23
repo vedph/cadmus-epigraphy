@@ -1,7 +1,6 @@
 ﻿using Bogus;
 using Cadmus.Core;
 using Cadmus.Epigraphy.Parts;
-using Cadmus.Mat.Bricks;
 using Fusi.Tools.Configuration;
 using System;
 using System.Collections.Generic;
@@ -25,25 +24,21 @@ public sealed class EpiSignsPartSeeder : PartSeederBase
             {
                 Id = f.PickRandom("A", "B", "H"),
                 Features = [f.PickRandom("alpha", "beta")],
-                Sizes = new Dictionary<string, PhysicalSize>
-                {
-                    ["height"] = new PhysicalSize
+                Measurements =
+                [
+                    new()
                     {
-                        W = new PhysicalDimension
-                        {
-                            Value = f.Random.Float(1, 5),
-                            Unit = "cm"
-                        }
+                        Name = "width",
+                        Value = f.Random.Float(1, 5),
+                        Unit = "cm"
                     },
-                    ["width"] = new PhysicalSize
+                    new()
                     {
-                        H = new PhysicalDimension
-                        {
-                            Value = f.Random.Float(1, 5),
-                            Unit = "cm"
-                        }
+                        Name = "height",
+                        Value = f.Random.Float(1, 5),
+                        Unit = "cm"
                     }
-                },
+                ],
                 Description = f.Lorem.Sentence()
             };
             signs.Add(sign);

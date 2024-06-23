@@ -53,6 +53,10 @@ Also, you might want to add epigraphic formula items, having an [EpiFormulaPatte
 
 ## History
 
+### 3.0.6
+
+- 2024-06-23: improved new sign model.
+
 ### 3.0.5
 
 - 2024-06-22: added new models for writing signs and support fragments.
