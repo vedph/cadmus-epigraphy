@@ -29,13 +29,13 @@ public sealed class EpiSignsPartSeeder : PartSeederBase
                     new()
                     {
                         Name = "width",
-                        Value = f.Random.Float(1, 5),
+                        Value = (float)Math.Round(f.Random.Float(1, 5), 1),
                         Unit = "cm"
                     },
                     new()
                     {
                         Name = "height",
-                        Value = f.Random.Float(1, 5),
+                        Value = (float)Math.Round(f.Random.Float(1, 5), 1),
                         Unit = "cm"
                     }
                 ],

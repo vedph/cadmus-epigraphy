@@ -30,12 +30,12 @@ public sealed class EpiSupportFrrPartSeeder : PartSeederBase
                 {
                     W = new PhysicalDimension
                     {
-                        Value = f.Random.Float(1, 5),
+                        Value = (float)Math.Round(f.Random.Float(1, 5), 1),
                         Unit = "cm"
                     },
                     H = new PhysicalDimension
                     {
-                        Value = f.Random.Float(1, 5),
+                        Value = (float)Math.Round(f.Random.Float(1, 5), 1),
                         Unit = "cm"
                     }
                 },

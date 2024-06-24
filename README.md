@@ -53,6 +53,10 @@ Also, you might want to add epigraphic formula items, having an [EpiFormulaPatte
 
 ## History
 
+### 3.0.7
+
+- 2024-06-24: round size values in seeders.
+
 ### 3.0.6
 
 - 2024-06-23: improved new sign model.
