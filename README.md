@@ -53,6 +53,12 @@ Also, you might want to add epigraphic formula items, having an [EpiFormulaPatte
 
 ## History
 
+### 3.1.0
+
+- 2024-07-14:
+  - refactored epigraphic fragment location model.
+  - updated test packages.
+
 ### 3.0.7
 
 - 2024-06-24: round size values in seeders.

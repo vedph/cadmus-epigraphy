@@ -1,4 +1,5 @@
 ﻿using Cadmus.Mat.Bricks;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Cadmus.Epigraphy.Parts;
@@ -30,58 +31,29 @@ public class EpiSupportFr
     public PhysicalSize? Size { get; set; }
 
     /// <summary>
-    /// Gets or sets the row number (1-N) for the relative location of this
-    /// fragment in the inscription, represented as a table where each line
-    /// is a row.
+    /// Gets or sets the count of rows in the ideal grid overlaid as a bounding
+    /// rectangle over the inscription.
     /// </summary>
-    public short Row { get; set; }
+    public short RowCount { get; set; }
 
     /// <summary>
-    /// Gets or sets the column number (1-N) for the relative location of this
-    /// fragment in the inscription, represented as a table where each line
-    /// is a row.
+    /// Gets or sets the count of columns of the ideal grid overlaid as a
+    /// bounding rectangle over the inscription.
     /// </summary>
-    public short Column { get; set; }
+    public short ColumnCount { get; set; }
 
     /// <summary>
-    /// Gets or sets the rows span for this fragment location.
+    /// Gets or sets the location. This is represented by one or more
+    /// spreadsheet-like coordinates (e.g. A1) separated by spaces, each
+    /// corresponding to a grid's cell. Usually their order reflects the
+    /// reading order of the remnant text.
     /// </summary>
-    public short RowSpan { get; set; }
+    public string Location { get; set; } = "";
 
     /// <summary>
-    /// Gets or sets the columns span for this fragment location.
+    /// Gets or sets the cell mappings.
     /// </summary>
-    public short ColumnSpan { get; set; }
-
-    /// <summary>
-    /// Gets or sets the initial portion of the text covered by this fragment,
-    /// used for a more human-friendly reference (e.g. <c>dis manibus</c>...).
-    /// </summary>
-    public string? HeadText { get; set; }
-
-    /// <summary>
-    /// Gets or sets the location of the first character of the text covered
-    /// by this fragment with reference to the inscription. This is typically
-    /// a Cadmus location, e.g. <c>1.3@4</c> meaning line 1, token 3, 4th
-    /// character; but it could be anything, or just omitted, especially when
-    /// you have no text in the database.
-    /// </summary>
-    public string? HeadTextLoc { get; set; }
-
-    /// <summary>
-    /// Gets or sets the final portion of the text covered by this fragment,
-    /// used for a more human-friendly reference (e.g. ...<c>vale</c>).
-    /// </summary>
-    public string? TailText { get; set; }
-
-    /// <summary>
-    /// Gets or sets the location of the last character of the text covered
-    /// by this fragment with reference to the inscription. This is typically
-    /// a Cadmus location, e.g. <c>2.4@2</c> meaning line 2, token 4, 2nd
-    /// character; but it could be anything, or just omitted, especially when
-    /// you have no text in the database.
-    /// </summary>
-    public string? TailTextLoc { get; set; }
+    public List<EpiSupportFrCellMapping>? CellMappings { get; set; }
 
     /// <summary>
     /// Gets or sets a short free text note about this fragment.
@@ -105,13 +77,10 @@ public class EpiSupportFr
 
         if (Size != null) sb.Append(": ").Append(Size);
 
-        if (Row > 0)
+        if (RowCount > 0)
         {
-            sb.Append(" (R").Append(Row);
-            if (RowSpan > 0) sb.Append('×').Append(RowSpan);
-            sb.Append('C').Append(Column);
-            if (ColumnSpan > 0) sb.Append('×').Append(ColumnSpan);
-            sb.Append(')');
+            sb.Append(" [").Append(RowCount).Append('x').Append(ColumnCount).Append(']');
+            if (!string.IsNullOrEmpty(Location)) sb.Append(' ').Append(Location);
         }
 
         return sb.ToString();

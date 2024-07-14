@@ -40,16 +40,18 @@ public sealed class EpiSupportFrrPartSeeder : PartSeederBase
                     }
                 },
                 IsLost = f.Random.Bool(0.25f),
-                Row = (short)f.Random.Number(1, 5),
-                Column = (short)f.Random.Number(1, 5),
-                RowSpan = f.Random.Bool(0.25f)
-                    ? (short)f.Random.Number(2, 3) : (short)0,
-                ColumnSpan = f.Random.Bool(0.25f)
-                    ? (short)f.Random.Number(2, 3) : (short)0,
-                HeadText = f.Random.Bool(0.25f) ? f.Lorem.Sentence(3) : null,
-                TailText = f.Random.Bool(0.25f) ? f.Lorem.Sentence(3) : null,
+                RowCount = (short)f.Random.Number(2, 6),
+                ColumnCount = (short)f.Random.Number(2, 6),
                 Note = f.Random.Bool(0.25f) ? f.Lorem.Sentence() : null,
             };
+
+            if (fr.RowCount > 1 && fr.ColumnCount > 1)
+            {
+                fr.Location =
+                    $"{(char)('A' - 1 + f.Random.Number(1, fr.ColumnCount))}" +
+                    $"{f.Random.Number(1, fr.RowCount)}";
+            }
+
             fragments.Add(fr);
         }
 
