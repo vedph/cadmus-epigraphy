@@ -53,6 +53,10 @@ Also, you might want to add epigraphic formula items, having an [EpiFormulaPatte
 
 ## History
 
+### 3.1.1
+
+- 2024-07-17: moved `PhysicalMeasurement` to bricks.
+
 ### 3.1.0
 
 - 2024-07-14:

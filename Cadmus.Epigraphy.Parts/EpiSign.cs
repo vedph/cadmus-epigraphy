@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Cadmus.Mat.Bricks;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Cadmus.Epigraphy.Parts;
