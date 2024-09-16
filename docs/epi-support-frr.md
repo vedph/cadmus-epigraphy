@@ -2,6 +2,8 @@
 
 🔑 `it.vedph.epigraphy.support-frr`.
 
+Description of the fragments of an epigraphic support.
+
 - fragments (`EpiSupportFr[]`):
   - id\* (`string`): the unique fragment identifier (e.g. `A`). This is unique in the context of its part.
   - shelfmark (`string`): the shelfmark number for this fragment.
@@ -25,3 +27,7 @@
     - tailText (`string`): the final portion of the text covered by this fragment, used for a more human-friendly reference (e.g. ...`vale`).
     - tailTextLoc (`string`): the location of the last character of the text covered by this fragment with reference to the inscription. This is typically a Cadmus location, e.g. `2.4@2` meaning line 2, token 4, 2nd character; but it could be anything, or just omitted, especially when you have no text in the database.
   - note (`string`)
+
+Apart from generic metadata, the fragment model location is based on an ideal grid overlaid as a bounding rectangle over the reconstructed surface of the material support. This is a traditional approach for representing the approximate location of fragments on the reconstructed support; for instance, Manzella 1987 fig.205 uses a fixed 3x3 grid and names each resulting cell with a letter from A to I: ABC in the first row, DEF in the second, GHI in the third. Once defined these grid coordinates, the fragments layout can be defined with these letters, e.g. AEC means that the fragment covers the first cell of the first row, the second cell of the second row, and the third cell of the first row, assuming that this 3x3 grid is overlaid on top of the integral surface of the inscription.
+
+In our model, we prefer a more flexible approach, where you can freely define the grid size, and then use alphanumeric coordinates to locate each cell, like in a spreadsheet. So, the model has the rows and columns count defining the grid's size, and a location with one or more coordinates.
