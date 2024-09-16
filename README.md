@@ -23,7 +23,7 @@ For instance, an inscription item might include parts like:
 - [EpiSupportPart](docs/epi-support.md)
 - [EpiSupportFrrPart](docs/epi-support-frr.md)
 - [EpiWritingPart](docs/epi-writing.md)
-- [EpiSignsPart](docs/epi-signs.md)]
+- [EpiSignsPart](docs/epi-signs.md)
 
 (b) classification:
 
