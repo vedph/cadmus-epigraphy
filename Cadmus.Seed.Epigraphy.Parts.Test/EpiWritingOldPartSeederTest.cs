@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Cadmus.Seed.Epigraphy.Parts.Test;
 
-public sealed class EpiWritingPartSeederTest
+public sealed class EpiWritingOldPartSeederTest
 {
     private static readonly PartSeederFactory _factory =
     TestHelper.GetFactory();
@@ -19,23 +19,23 @@ public sealed class EpiWritingPartSeederTest
     [Fact]
     public void TypeHasTagAttribute()
     {
-        Type t = typeof(EpiWritingPartSeeder);
+        Type t = typeof(EpiWritingOldPartSeeder);
         TagAttribute? attr = t.GetTypeInfo().GetCustomAttribute<TagAttribute>();
         Assert.NotNull(attr);
-        Assert.Equal("seed.it.vedph.epigraphy.writing", attr!.Tag);
+        Assert.Equal("seed.it.vedph.epigraphy.writing.old", attr!.Tag);
     }
 
     [Fact]
     public void Seed_Ok()
     {
-        EpiWritingPartSeeder seeder = new();
+        EpiWritingOldPartSeeder seeder = new();
         seeder.SetSeedOptions(_seedOptions);
 
         IPart? part = seeder.GetPart(_item, null, _factory);
 
         Assert.NotNull(part);
 
-        EpiWritingPart? p = part as EpiWritingPart;
+        EpiWritingOldPart? p = part as EpiWritingOldPart;
         Assert.NotNull(p);
 
         TestHelper.AssertPartMetadata(p!);

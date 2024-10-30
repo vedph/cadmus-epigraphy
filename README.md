@@ -1,13 +1,14 @@
 # Cadmus Epigraphy
 
 - parts:
-  - [writing](docs/epi-writing.md)
-  - [support](docs/epi-support.md)
-  - [formula patterns](docs/epi-formula-patterns.md)
-  - [signs](docs/epi-signs.md)
-  - [support fragments](docs/epi-support-frr.md)
+  - [EpiWritingPart](docs/epi-writing.md)
+  - [EpiSupportPart](docs/epi-support.md)
+  - [EpiFormulaPatternsPart](docs/epi-formula-patterns.md)
+  - [EpiSignsPart](docs/epi-signs.md)
+  - [EpiSupportFrrPart](docs/epi-support-frr.md)
+  - [EpiTechniquePart](docs/epi-technique.md)
 - fragments:
-  - [ligatures](docs/fr.epi-ligatures.md)
+  - [EpiLigaturesLayerFragment](docs/fr.epi-ligatures.md)
 
 These libraries include some essential epigraphic components for Cadmus. The components will be reused in a wider context.
 
@@ -24,6 +25,7 @@ For instance, an inscription item might include parts like:
 - [EpiSupportFrrPart](docs/epi-support-frr.md)
 - [EpiWritingPart](docs/epi-writing.md)
 - [EpiSignsPart](docs/epi-signs.md)
+- [EpiTechniquePart](docs/epi-technique.md)
 
 (b) classification:
 
@@ -52,6 +54,19 @@ For instance, an inscription item might include parts like:
 Also, you might want to add epigraphic formula items, having an [EpiFormulaPatternsPart](docs/epi-formula-patterns.md) to describe its patterns, and other generic parts for its metadata, categories, keywords, datation, etc.
 
 ## History
+
+## 4.0.1
+
+- 2024-10-30: minor adjustments in new models.
+
+## 4.0.0
+
+- 2024-10-29: ⚠️ breaking changes on models:
+  - `EpiSupport` and its related seeders and tests renamed in `EpiSupportOld` and marked as obsolete. The corresponding identifiers are now `it.vedph.epigraphy.support.old` and `seed.it.vedph.epigraphy.support.old`.
+  - `EpiWriting` and its related seeders and tests renamed in `EpiWritingOld` and marked as obsolete. The corresponding identifiers are now `it.vedph.epigraphy.writing.old` and `seed.it.vedph.epigraphy.writing.old`.
+  - new models replaced them: `EpiSupport` (`it.vedph.epigraphy.support`) and `EpiWriting` (`it.vedph.epigraphy.writing`) with their related seeders and tests. This allows merging graffiti models into epigraphic models, while also making some models more composable via parts composition rather than part complication.
+
+The only projects planning to use these affected parts are Febo and Gisarc. Should they want to stick to the old models, they will later have to copy them (with their editors) into their project-specific parts, as in future obsolete parts will be removed from Cadmus epigraphy.
 
 ## 3.1.2
 

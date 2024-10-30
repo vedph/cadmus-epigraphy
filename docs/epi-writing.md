@@ -3,6 +3,16 @@
 🔑 `it.vedph.epigraphy.writing`.
 
 - system (`string` 📚 `epi-writing-systems`, usually ISO 15924 lowercase)
+- script (`string` 📚 `epi-writing-scripts`)
+- casing (`string` 📚 `epi-writing-casings`)
+- features (`string[]` 📚 `epi-writing-features`)
+- note (`string`)
+
+## Old Model
+
+🔑 `it.vedph.epigraphy.writing.old`.
+
+- system (`string` 📚 `epi-writing-systems`, usually ISO 15924 lowercase)
 - type (`string` 📚 `epi-writing-types`)
 - technique (`string` 📚 `epi-writing-techniques`)
 - tool (`string` 📚 `epi-writing-tools`)

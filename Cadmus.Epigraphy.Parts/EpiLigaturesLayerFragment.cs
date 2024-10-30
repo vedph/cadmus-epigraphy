@@ -22,7 +22,7 @@ public sealed class EpiLigaturesLayerFragment : ITextLayerFragment
     /// simple token-based coordinates system (e.g. 1.2=second token of
     /// first block), or a more complex system like an XPath expression.
     /// </remarks>
-    public string Location { get; set; }
+    public string Location { get; set; } = "";
 
     /// <summary>
     /// Gets or sets the optional entity ID for the ligature.
@@ -30,10 +30,10 @@ public sealed class EpiLigaturesLayerFragment : ITextLayerFragment
     public string? Eid { get; set; }
 
     /// <summary>
-    /// Gets or sets the ligature's type(s). Usually derived from a
-    /// thesaurus.
+    /// Gets or sets the ligature's type(s), typically from
+    /// <c>epi-ligatures-types</c>.
     /// </summary>
-    public List<string> Types { get; set; }
+    public HashSet<string> Types { get; set; } = [];
 
     /// <summary>
     /// Gets or sets the optional group identifier. This can be used
@@ -45,16 +45,6 @@ public sealed class EpiLigaturesLayerFragment : ITextLayerFragment
     /// Gets or sets an optional note.
     /// </summary>
     public string? Note { get; set; }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="EpiLigaturesLayerFragment"/>
-    /// class.
-    /// </summary>
-    public EpiLigaturesLayerFragment()
-    {
-        Location = "";
-        Types = new List<string>();
-    }
 
     /// <summary>
     /// Get all the key=value pairs (pins) exposed by the implementor.

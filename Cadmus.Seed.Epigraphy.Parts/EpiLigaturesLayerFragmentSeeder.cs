@@ -26,6 +26,11 @@ public sealed class EpiLigaturesLayerFragmentSeeder : FragmentSeederBase,
     /// <returns>Type.</returns>
     public override Type GetFragmentType() => typeof(EpiLigaturesLayerFragment);
 
+    /// <summary>
+    /// Configures this seeder with the specified options.
+    /// </summary>
+    /// <param name="options">The options.</param>
+    /// <exception cref="ArgumentNullException">options</exception>
     public void Configure(EpiLigaturesLayerFragmentSeederOptions options)
     {
         _options = options ?? throw new ArgumentNullException(nameof(options));
@@ -51,7 +56,7 @@ public sealed class EpiLigaturesLayerFragmentSeeder : FragmentSeederBase,
         return new Faker<EpiLigaturesLayerFragment>()
             .RuleFor(fr => fr.Location, location)
             .RuleFor(fr => fr.Eid, f => $"l{f.IndexGlobal}")
-            .RuleFor(fr => fr.Types, f => new List<string> { f.PickRandom(types) })
+            .RuleFor(fr => fr.Types, f => [ f.PickRandom(types) ])
             .RuleFor(fr => fr.GroupId, f => f.Random.Bool(0.25F)? "g" : null)
             .RuleFor(fr => fr.Note,
                 f => f.Random.Bool(0.3F) ? f.Lorem.Sentence(10) : null)
@@ -59,6 +64,9 @@ public sealed class EpiLigaturesLayerFragmentSeeder : FragmentSeederBase,
     }
 }
 
+/// <summary>
+/// Seeder options for epigraphic ligatures.
+/// </summary>
 public class EpiLigaturesLayerFragmentSeederOptions
 {
     public IList<string> Types { get; set; }
@@ -70,8 +78,8 @@ public class EpiLigaturesLayerFragmentSeederOptions
 
     public static IList<string> GetDefaultTypes()
     {
-        return new List<string>()
-        {
+        return
+        [
             // see Manzella 1987 149-151
             // nesso
             "joint",
@@ -87,6 +95,6 @@ public class EpiLigaturesLayerFragmentSeederOptions
             "inclusion",
             // connessione (e.g. continuous overline on ARC)
             "connection"
-        };
+        ];
     }
 }

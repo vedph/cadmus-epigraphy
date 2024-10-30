@@ -33,7 +33,7 @@ static internal class TestHelper
             // Cadmus.Core
             typeof(StandardItemSortKeyBuilder).Assembly,
             // Cadmus.Epigraphy.Parts
-            typeof(EpiSupportPart).Assembly
+            typeof(EpiSupportOldPart).Assembly
         });
 
         return new HostBuilder().ConfigureServices((hostContext, services) =>
@@ -43,7 +43,7 @@ static internal class TestHelper
                 new[]
                 {
                     // Cadmus.Seed.Epigraphy.Parts
-                    typeof(EpiSupportPartSeeder).Assembly
+                    typeof(EpiSupportOldPartSeeder).Assembly
                 });
             })
             // extension method from Fusi library

@@ -54,7 +54,7 @@ public sealed class EpiLigaturesLayerFragmentTest
     {
         EpiLigaturesLayerFragment fragment = GetEmptyFragment();
         fragment.Eid = "x";
-        fragment.Types = new List<string> { "joint", "inversion" };
+        fragment.Types = [ "joint", "inversion" ];
 
         List<DataPin> pins = fragment.GetDataPins(null).ToList();
 

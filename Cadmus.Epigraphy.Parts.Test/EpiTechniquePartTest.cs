@@ -1,18 +1,17 @@
-﻿using Cadmus.Core;
-using Cadmus.Refs.Bricks;
-using Cadmus.Seed.Epigraphy.Parts;
-using System;
+﻿using System;
+using Xunit;
+using Cadmus.Core;
 using System.Collections.Generic;
 using System.Linq;
-using Xunit;
+using Cadmus.Seed.Epigraphy.Parts;
 
 namespace Cadmus.Epigraphy.Parts.Test;
 
-public sealed class EpiWritingPartTest
+public sealed class EpiTechniquePartTest
 {
-    private static EpiWritingPart GetPart()
+    private static EpiTechniquePart GetPart()
     {
-        EpiWritingPartSeeder seeder = new();
+        EpiTechniquePartSeeder seeder = new();
         IItem item = new Item
         {
             FacetId = "default",
@@ -22,12 +21,12 @@ public sealed class EpiWritingPartTest
             Title = "Test Item",
             SortKey = ""
         };
-        return (EpiWritingPart)seeder.GetPart(item, null, null)!;
+        return (EpiTechniquePart)seeder.GetPart(item, null, null)!;
     }
 
-    private static EpiWritingPart GetEmptyPart()
+    private static EpiTechniquePart GetEmptyPart()
     {
-        return new EpiWritingPart
+        return new EpiTechniquePart
         {
             ItemId = Guid.NewGuid().ToString(),
             RoleId = "some-role",
@@ -39,10 +38,10 @@ public sealed class EpiWritingPartTest
     [Fact]
     public void Part_Is_Serializable()
     {
-        EpiWritingPart part = GetPart();
+        EpiTechniquePart part = GetPart();
 
         string json = TestHelper.SerializePart(part);
-        EpiWritingPart part2 = TestHelper.DeserializePart<EpiWritingPart>(json)!;
+        EpiTechniquePart part2 = TestHelper.DeserializePart<EpiTechniquePart>(json)!;
 
         Assert.Equal(part.Id, part2.Id);
         Assert.Equal(part.TypeId, part2.TypeId);
@@ -53,30 +52,25 @@ public sealed class EpiWritingPartTest
     }
 
     [Fact]
-    public void GetDataPins_Ok()
+    public void GetDataPins_Tag_1()
     {
-        EpiWritingPart part = GetEmptyPart();
-        part.System = "latn";
-        part.Script = "merchant";
-        part.Casing = "uppercase";
-        part.Features.Add("ligatures");
+        EpiTechniquePart part = GetEmptyPart();
+        part.Techniques.Add("engraving");
+        part.Tools.Add("chisel");
+        part.Tools.Add("ink");
 
         List<DataPin> pins = part.GetDataPins(null).ToList();
-        Assert.Equal(4, pins.Count);
+        Assert.Equal(3, pins.Count);
 
-        DataPin? pin = pins.Find(p => p.Name == "system" && p.Value == "latn");
+        DataPin? pin = pins.Find(p => p.Name == "technique" && p.Value == "engraving");
         Assert.NotNull(pin);
         TestHelper.AssertPinIds(part, pin!);
 
-        pin = pins.Find(p => p.Name == "script" && p.Value == "merchant");
+        pin = pins.Find(p => p.Name == "tool" && p.Value == "chisel");
         Assert.NotNull(pin);
         TestHelper.AssertPinIds(part, pin!);
 
-        pin = pins.Find(p => p.Name == "casing" && p.Value == "uppercase");
-        Assert.NotNull(pin);
-        TestHelper.AssertPinIds(part, pin!);
-
-        pin = pins.Find(p => p.Name == "feature" && p.Value == "ligatures");
+        pin = pins.Find(p => p.Name == "tool" && p.Value == "ink");
         Assert.NotNull(pin);
         TestHelper.AssertPinIds(part, pin!);
     }

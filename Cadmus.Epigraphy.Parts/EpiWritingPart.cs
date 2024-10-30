@@ -1,5 +1,4 @@
 ﻿using Cadmus.Core;
-using Cadmus.Refs.Bricks;
 using Fusi.Tools.Configuration;
 using System.Collections.Generic;
 using System.Text;
@@ -14,83 +13,34 @@ namespace Cadmus.Epigraphy.Parts;
 public sealed class EpiWritingPart : PartBase
 {
     /// <summary>
-    /// Gets or sets the writing system (usually ISO 15924, lowercased).
+    /// Gets or sets the writing system (usually from <c>epi-writing-systems</c>,
+    /// mostly ISO 15924, lowercased, e.g. <c>latn</c>, <c>grek</c>).
     /// </summary>
     public string? System { get; set; }
 
     /// <summary>
-    /// Gets or sets the writing type.
+    /// Gets or sets the script type (e.g. gothic, merchant, etc.), typically
+    /// from <c>epi-writing-scripts</c>.
     /// </summary>
-    public string? Type { get; set; }
+    public string Script { get; set; } = "";
 
     /// <summary>
-    /// Gets or sets the writing technique.
+    /// Gets or sets the prevalent casing, when applicable (e.g. uppercase,
+    /// lowercase, uppercase + lowercase, etc.), typically from
+    /// <c>epi-writing-casings</c>.
     /// </summary>
-    public string? Technique { get; set; }
+    public string? Casing { get; set; }
 
     /// <summary>
-    /// Gets or sets the writing tool.
+    /// Gets or sets the script features (e.g. abbreviations, ligatures,
+    /// punctuation, etc.), typically from <c>epi-writing-features</c>.
     /// </summary>
-    public string? Tool { get; set; }
+    public HashSet<string> Features { get; set; } = [];
 
     /// <summary>
-    /// Gets or sets the type of the frame.
+    /// Gets or sets a generic note.
     /// </summary>
-    public string? FrameType { get; set; }
-
-    /// <summary>
-    /// Gets or sets a set of specific counts, like e.g. rows, columns,
-    /// characters per line, etc. The count types usually depend on a
-    /// thesaurus.
-    /// </summary>
-    public List<DecoratedCount> Counts { get; set; }
-
-    /// <summary>
-    /// Gets or sets the type of the main figurative element if applicable.
-    /// </summary>
-    public string? FigType { get; set; }
-
-    /// <summary>
-    /// Gets or sets the figurative features: these are usually drawn from a
-    /// closed set, e.g. hedera, chrismon, fish, dove, etc.
-    /// </summary>
-    public List<string> FigFeatures { get; set; }
-
-    /// <summary>
-    /// Gets or sets the script features: these are usually drawn from a
-    /// closed set, e.g. text, digits, punctuations, ligatures,
-    /// abbreviations, monograms, single-letter, undefined-letters,
-    /// undefined-drawings.
-    /// </summary>
-    public List<string> ScriptFeatures { get; set; }
-
-    /// <summary>
-    /// Gets or sets the text language(s) (usually ISO 639-3).
-    /// </summary>
-    public List<string> Languages { get; set; }
-
-    /// <summary>
-    /// Gets or sets a value indicating whether this inscription contains
-    /// some poetic text.
-    /// </summary>
-    public bool HasPoetry { get; set; }
-
-    /// <summary>
-    /// Gets or sets the metre(s) used in the poetic text if any.
-    /// </summary>
-    public List<string> Metres { get; set; }
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="GrfWritingPart"/> class.
-    /// </summary>
-    public EpiWritingPart()
-    {
-        Counts = new List<DecoratedCount>();
-        FigFeatures = new List<string>();
-        ScriptFeatures = new List<string>();
-        Languages = new List<string>();
-        Metres= new List<string>();
-    }
+    public string? Note { get; set; }
 
     /// <summary>
     /// Get all the key=value pairs (pins) exposed by the implementor.
@@ -104,27 +54,10 @@ public sealed class EpiWritingPart : PartBase
         DataPinBuilder builder = new();
 
         builder.AddValue("system", System);
-        builder.AddValue("type", Type);
-        builder.AddValue("technique", Technique);
-        builder.AddValue("tool", Tool);
-        builder.AddValue("frame-type", FrameType);
-        builder.AddValue("fig-type", FigType);
+        builder.AddValue("script", Script);
+        builder.AddValue("casing", Casing);
 
-        builder.AddValue("poetic", HasPoetry);
-        builder.AddValues("language", Languages);
-        builder.AddValues("metre", Metres);
-
-        if (Counts?.Count > 0)
-        {
-            foreach (DecoratedCount count in Counts)
-                builder.AddValue($"c-{count.Id}", count.Value);
-        }
-       
-        if (FigFeatures?.Count > 0)
-            builder.AddValues("fig-feat", FigFeatures);
-
-        if (ScriptFeatures?.Count > 0)
-            builder.AddValues("script-feat", ScriptFeatures);
+        if (Features?.Count > 0) builder.AddValues("feature", Features);
 
         return builder.Build(this);
     }
@@ -135,49 +68,21 @@ public sealed class EpiWritingPart : PartBase
     /// <returns>Data pins definitions.</returns>
     public override IList<DataPinDefinition> GetDataPinDefinitions()
     {
-        return new List<DataPinDefinition>(new[]
-        {
+        return new List<DataPinDefinition>(
+        [
              new DataPinDefinition(DataPinValueType.String,
                 "system",
                 "The writing system."),
              new DataPinDefinition(DataPinValueType.String,
-                "type",
-                "The writing type."),
+                "script",
+                "The writing script."),
              new DataPinDefinition(DataPinValueType.String,
-                "technique",
-                "The writing technique."),
+                "casing",
+                "The prevalent casing, when applicable."),
              new DataPinDefinition(DataPinValueType.String,
-                "tool",
-                "The writing tool."),
-             new DataPinDefinition(DataPinValueType.String,
-                "frame-type",
-                "The frame type."),
-             new DataPinDefinition(DataPinValueType.String,
-                "fig-type",
-                "The main figurative type."),
-             new DataPinDefinition(DataPinValueType.Boolean,
-                "poetic",
-                "True if contains poetic text."),
-             new DataPinDefinition(DataPinValueType.String,
-                "metre",
-                "The metre(s) used in the poetic text.",
-                "M"),
-             new DataPinDefinition(DataPinValueType.String,
-                "language",
-                "The language(s) used in the text.",
-                "M"),
-             new DataPinDefinition(DataPinValueType.String,
-                "fig-feat",
-                "The figurative feature(s) present.",
-                "M"),
-             new DataPinDefinition(DataPinValueType.String,
-                "script-feat",
-                "The script feature(s) present.",
-                "M"),
-             new DataPinDefinition(DataPinValueType.Integer,
-                "c-...",
-                "The counts. Each count type has its name."),
-        });
+                "feature",
+                "The script features.", "M"),
+        ]);
     }
 
     /// <summary>
@@ -190,9 +95,9 @@ public sealed class EpiWritingPart : PartBase
     {
         StringBuilder sb = new();
 
-        sb.Append("[EpiWriting] ").Append(System).Append(' ').Append(Type);
-        if (Languages?.Count > 0)
-            sb.Append(": ").AppendJoin(", ", Languages);
+        sb.Append("[EpiWriting] ");
+        if (!string.IsNullOrEmpty(System)) sb.Append(System).Append(' ');
+        if (!string.IsNullOrEmpty(Script)) sb.Append(Script);
 
         return sb.ToString();
     }

@@ -1,7 +1,6 @@
 ﻿using Bogus;
 using Cadmus.Core;
 using Cadmus.Epigraphy.Parts;
-using Cadmus.Mat.Bricks;
 using Fusi.Tools.Configuration;
 using System;
 
@@ -29,34 +28,23 @@ public sealed class EpiSupportPartSeeder : PartSeederBase
     {
         ArgumentNullException.ThrowIfNull(item);
 
-        string[] fnn = new[] { "street", "house" };
+        string[] fnn = ["private", "public"];
+        string[] types = ["house", "library", "castle"];
 
         EpiSupportPart part = new Faker<EpiSupportPart>()
+           .RuleFor(p => p.Material,
+                    f => f.PickRandom("concrete", "wood", "stone"))
            .RuleFor(p => p.OriginalFn, f => f.PickRandom(fnn))
            .RuleFor(p => p.CurrentFn, f => f.PickRandom(fnn))
-           .RuleFor(p => p.ObjectType,
-                f => f.PickRandom("street", "bridge", "well"))
-           .RuleFor(p => p.SupportType,
-                f => f.PickRandom("street", "door"))
-           .RuleFor(p => p.Material,
-                f => f.PickRandom("concrete", "wood", "stone"))
+           .RuleFor(p => p.OriginalType, f => f.PickRandom(types))
+           .RuleFor(p => p.CurrentType, f => f.PickRandom(types))
            .RuleFor(p => p.Indoor, f => f.Random.Bool())
-           .RuleFor(p => p.Size,
-                f => new PhysicalSize
-                {
-                    W = new PhysicalDimension
-                    {
-                        Value = f.Random.Number(5, 30),
-                        Unit = "cm"
-                    },
-                    H = new PhysicalDimension
-                    {
-                        Value = f.Random.Number(5, 30),
-                        Unit = "cm"
-                    }
-                })
-           .RuleFor(p => p.State, f => f.Lorem.Sentence())
-           .RuleFor(p => p.LastSeen, f => f.Date.Past())
+           .RuleFor(p => p.ObjectType, f => f.PickRandom("column", "window"))
+           .RuleFor(p => p.SupportSize, f => SeedHelper.GetSize(f))
+           .RuleFor(p => p.HasDamnatio, f => f.Random.Bool(0.25f))
+           .RuleFor(p => p.HasFrame, f => f.Random.Bool(0.25f))
+           .RuleFor(p => p.Note, f => f.Random.Bool(0.25f)
+                ? f.Lorem.Sentence() : null)
            .Generate();
         SetPartMetadata(part, roleId, item);
 
