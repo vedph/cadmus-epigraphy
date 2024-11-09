@@ -68,6 +68,11 @@ Also, you might want to add epigraphic formula items, having an [EpiFormulaPatte
 
 The only projects planning to use these affected parts are Febo and Gisarc. Should they want to stick to the old models, they will later have to copy them (with their editors) into their project-specific parts, as in future obsolete parts will be removed from Cadmus epigraphy.
 
+The changes are limited to 2 parts: [writing](docs/epi-writing.md) and [support](docs/epi-support.md). The driving **principles** behind these changes were two:
+
+- try to be as close as possible to the **traditional** models of big collections, like IMAI, while generalizing them for wider usage and compliance, even embracing graffiti.
+- make the model **more modular**, so that it can be more easily customized to every project's requirements. This essentially means making smaller parts, which can be better handled either separately and in combination. In the Cadmus model, in the end each record is an item, our "box": the dynamic nature of its model derives from the objects we put in that box, our parts. So, parts which include data which can be effectively represented by another part model and are logically distinct, can be dismembered into smaller parts. This makes them more reusable, and allows users build their own models with much more effective customization, because they can decide to include or exclude whole subsections of data, right because they are separated into different, composable objects.
+
 ## 3.1.2
 
 - 2024-09-27: updated packages.
