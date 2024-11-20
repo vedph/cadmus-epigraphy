@@ -38,6 +38,7 @@ public sealed class EpiSupportPartSeeder : PartSeederBase
            .RuleFor(p => p.CurrentFn, f => f.PickRandom(fnn))
            .RuleFor(p => p.OriginalType, f => f.PickRandom(types))
            .RuleFor(p => p.CurrentType, f => f.PickRandom(types))
+           .RuleFor(p => p.InSitu, f => f.Random.Bool())
            .RuleFor(p => p.Indoor, f => f.Random.Bool())
            .RuleFor(p => p.ObjectType, f => f.PickRandom("column", "window"))
            .RuleFor(p => p.SupportSize, f => SeedHelper.GetSize(f))

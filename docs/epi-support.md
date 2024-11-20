@@ -8,6 +8,7 @@
 - originalType (`string` 📚 `epi-support-types`)
 - currentType (`string` 📚 `epi-support-types`)
 - objectType (`string` 📚 `epi-support-object-types`)
+- inSitu (`boolean`)
 - indoor (`boolean`)
 - supportSize (`PhysicalSize`):
   - tag (string 📚 `physical-size-tags`)

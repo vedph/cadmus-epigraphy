@@ -52,7 +52,13 @@ public sealed class EpiSupportPart : PartBase
     public string? ObjectType { get; set; }
 
     /// <summary>
-    /// Gets or sets a value indicating whether the support is indoor.
+    /// Gets or sets a value indicating whether the support is located
+    /// in its original place (in situ).
+    /// </summary>
+    public bool InSitu { get; set; }
+
+    /// <summary>
+    /// Gets or sets a value indicating whether the support is located indoor.
     /// </summary>
     public bool Indoor { get; set; }
 
@@ -159,7 +165,8 @@ public sealed class EpiSupportPart : PartBase
         builder.AddValue("original-type", OriginalType);
         builder.AddValue("current-type", CurrentType);
         builder.AddValue("object-type", ObjectType);
-        builder.AddValue("indoor", Indoor);
+        if (InSitu) builder.AddValue("insitu", InSitu);
+        if (Indoor) builder.AddValue("indoor", Indoor);
 
         if (HasField) builder.AddValue("has-field", true);
         if (HasMirror) builder.AddValue("has-mirror", true);
@@ -207,6 +214,9 @@ public sealed class EpiSupportPart : PartBase
             new DataPinDefinition(DataPinValueType.String,
                 "object-type",
                 "The type of the support object."),
+            new DataPinDefinition(DataPinValueType.Boolean,
+                "insitu",
+                "True when support is in situ."),
             new DataPinDefinition(DataPinValueType.Boolean,
                 "indoor",
                 "True when support is indoor."),
