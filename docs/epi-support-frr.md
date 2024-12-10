@@ -8,14 +8,14 @@ Description of the fragments of an epigraphic support.
   - id\* (`string`): the unique fragment identifier (e.g. `A`). This is unique in the context of its part.
   - shelfmark (`string`): the shelfmark number for this fragment.
   - isLost (`boolean`)
-  - size (`PhysicalSize`):
+  - size (🧱 [PhysicalSize](https://github.com/vedph/cadmus-bricks/blob/master/docs/physical-size.md)):
     - tag (string 📚 `physical-size-tags`)
-    - w (`PhysicalDimension`):
+    - w (🧱 [PhysicalDimension](https://github.com/vedph/cadmus-bricks/blob/master/docs/physical-dimension.md)):
       - value\* (number)
       - unit\* (string 📚 `physical-size-units`)
       - tag (string 📚 `physical-size-dim-tags`)
-    - h (`PhysicalDimension`)
-    - d (`PhysicalDimension`)
+    - h (🧱 [PhysicalDimension](https://github.com/vedph/cadmus-bricks/blob/master/docs/physical-dimension.md))
+    - d (🧱 [PhysicalDimension](https://github.com/vedph/cadmus-bricks/blob/master/docs/physical-dimension.md))
     - note (`string`)
   - rowCount (`short`): the count of rows in the ideal grid overlaid as a bounding rectangle over the inscription.
   - columnCount (`short`): the count of columns of the ideal grid overlaid as a bounding rectangle over the inscription.

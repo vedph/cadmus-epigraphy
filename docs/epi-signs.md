@@ -6,7 +6,7 @@
   - id\* (`string`)
   - features (`string[]` 📚 `epi-signs-features`)
   - description (`string`, Markdown)
-  - measurements (`PhysicalMeasurement[]`):
+  - measurements (🧱 [PhysicalMeasurement[]](https://github.com/vedph/cadmus-bricks/blob/master/docs/physical-measurement.md)):
     - name\* (string 📚 `epi-signs-measure-names`)
     - value\* (number)
     - unit\* (string 📚 `physical-size-units`)

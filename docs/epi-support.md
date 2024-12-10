@@ -10,22 +10,22 @@
 - objectType (`string` 📚 `epi-support-object-types`)
 - inSitu (`boolean`)
 - indoor (`boolean`)
-- supportSize (`PhysicalSize`):
+- supportSize (🧱 [PhysicalSize](https://github.com/vedph/cadmus-bricks/blob/master/docs/physical-size.md)):
   - tag (string 📚 `physical-size-tags`)
-  - w (`PhysicalDimension`):
+  - w (🧱 [PhysicalDimension](https://github.com/vedph/cadmus-bricks/blob/master/docs/physical-dimension.md)):
     - value\* (number)
     - unit\* (string 📚 `physical-size-units`)
     - tag (string 📚 `physical-size-dim-tags`)
-  - h (`PhysicalDimension`)
-  - d (`PhysicalDimension`)
+  - h (🧱 [PhysicalDimension](https://github.com/vedph/cadmus-bricks/blob/master/docs/physical-dimension.md))
+  - d (🧱 [PhysicalDimension](https://github.com/vedph/cadmus-bricks/blob/master/docs/physical-dimension.md))
   - note (`string`)
 - hasField (`boolean`)
-- fieldSize (`PhysicalSize`)
+- fieldSize (🧱 [PhysicalSize](https://github.com/vedph/cadmus-bricks/blob/master/docs/physical-size.md))
 - hasMirror (`boolean`)
-- mirrorSize (`PhysicalSize`)
+- mirrorSize (🧱 [PhysicalSize](https://github.com/vedph/cadmus-bricks/blob/master/docs/physical-size.md))
 - hasFrame (`boolean`)
 - frame (`string`)
-- counts (`DecoratedCount[]`, 📚 `epi-support-count-types`): e.g. rows, columns, etc.
+- counts (🧱 [DecoratedCount[]](https://github.com/vedph/cadmus-bricks/blob/master/docs/decorated-count.md), 📚 `epi-support-count-types`): e.g. rows, columns, etc.
 - features (📚 `epi-support-features`): e.g. ruling, etc.
 - hasDamnatio (`boolean`)
 - note (`string`, 5000)
