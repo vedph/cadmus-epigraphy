@@ -55,6 +55,10 @@ Also, you might want to add epigraphic formula items, having an [EpiFormulaPatte
 
 ## History
 
+### 5.0.3
+
+- 2025-01-28: updated packages.
+
 ### 5.0.2
 
 - 2024-11-30: updated packages.
