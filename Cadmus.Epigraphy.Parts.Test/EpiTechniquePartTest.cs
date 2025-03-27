@@ -55,14 +55,19 @@ public sealed class EpiTechniquePartTest
     public void GetDataPins_Tag_1()
     {
         EpiTechniquePart part = GetEmptyPart();
+        part.GrooveType = "v-shaped";
         part.Techniques.Add("engraving");
         part.Tools.Add("chisel");
         part.Tools.Add("ink");
 
-        List<DataPin> pins = part.GetDataPins(null).ToList();
-        Assert.Equal(3, pins.Count);
+        List<DataPin> pins = [.. part.GetDataPins(null)];
+        Assert.Equal(4, pins.Count);
 
-        DataPin? pin = pins.Find(p => p.Name == "technique" && p.Value == "engraving");
+        DataPin? pin = pins.Find(p => p.Name == "groove" && p.Value == "v-shaped");
+        Assert.NotNull(pin);
+        TestHelper.AssertPinIds(part, pin!);
+
+        pin = pins.Find(p => p.Name == "technique" && p.Value == "engraving");
         Assert.NotNull(pin);
         TestHelper.AssertPinIds(part, pin!);
 

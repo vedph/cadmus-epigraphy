@@ -3,6 +3,7 @@ using Cadmus.Core;
 using Cadmus.Epigraphy.Parts;
 using Fusi.Tools.Configuration;
 using System;
+using System.Collections.Generic;
 
 namespace Cadmus.Seed.Epigraphy.Parts;
 
@@ -14,6 +15,15 @@ namespace Cadmus.Seed.Epigraphy.Parts;
 [Tag("seed.it.vedph.epigraphy.support")]
 public sealed class EpiSupportPartSeeder : PartSeederBase
 {
+    private static EpiTextArea GetTextArea()
+    {
+        return new Faker<EpiTextArea>()
+            .RuleFor(a => a.FrameType, f => f.PickRandom("simple", "double"))
+            .RuleFor(a => a.Layout, f => f.PickRandom("full-page", "columns"))
+            .RuleFor(a => a.FrameDescription, f => f.Lorem.Sentence())
+            .Generate();
+    }
+
     /// <summary>
     /// Creates and seeds a new part.
     /// </summary>
@@ -38,12 +48,11 @@ public sealed class EpiSupportPartSeeder : PartSeederBase
            .RuleFor(p => p.CurrentFn, f => f.PickRandom(fnn))
            .RuleFor(p => p.OriginalType, f => f.PickRandom(types))
            .RuleFor(p => p.CurrentType, f => f.PickRandom(types))
-           .RuleFor(p => p.InSitu, f => f.Random.Bool())
-           .RuleFor(p => p.Indoor, f => f.Random.Bool())
-           .RuleFor(p => p.ObjectType, f => f.PickRandom("column", "window"))
-           .RuleFor(p => p.SupportSize, f => SeedHelper.GetSize(f))
-           .RuleFor(p => p.HasDamnatio, f => f.Random.Bool(0.25f))
-           .RuleFor(p => p.HasFrame, f => f.Random.Bool(0.25f))
+           .RuleFor(p => p.ObjectType, f => f.PickRandom("slab", "column", "wall"))
+           .RuleFor(p => p.Features, f => new HashSet<string>(
+               [f.PickRandom("in-situ", "indoor")]))
+           .RuleFor(p => p.Size, f => SeedHelper.GetSize(f))
+           .RuleFor(p => p.TextAreas, _ => new List<EpiTextArea>([GetTextArea()]))
            .RuleFor(p => p.Note, f => f.Random.Bool(0.25f)
                 ? f.Lorem.Sentence() : null)
            .Generate();

@@ -14,6 +14,12 @@ namespace Cadmus.Epigraphy.Parts;
 public sealed class EpiTechniquePart : PartBase
 {
     /// <summary>
+    /// Gets or sets the type of the groove. Typically from
+    /// <c>epi-technique-groove-types</c>.
+    /// </summary>
+    public string? GrooveType { get; set; }
+
+    /// <summary>
     /// Gets or sets the techniques (e.g. "incision", "engraving"), typically
     /// from <c>epi-technique-types</c>.
     /// </summary>
@@ -41,6 +47,8 @@ public sealed class EpiTechniquePart : PartBase
     {
         DataPinBuilder builder = new();
 
+        if (!string.IsNullOrEmpty(GrooveType))
+            builder.AddValue("groove", GrooveType);
         builder.AddValues("technique", Techniques);
         builder.AddValues("tool", Tools);
 
@@ -55,6 +63,9 @@ public sealed class EpiTechniquePart : PartBase
     {
         return new List<DataPinDefinition>(
         [
+            new DataPinDefinition(DataPinValueType.String,
+                "groove",
+                "The groove type."),
             new DataPinDefinition(DataPinValueType.String,
                 "technique",
                 "The inscription technique.",

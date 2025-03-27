@@ -55,6 +55,17 @@ Also, you might want to add epigraphic formula items, having an [EpiFormulaPatte
 
 ## History
 
+⚠️ Breaking model changes for support:
+
+- `EpiSupportPart`:
+  - ⚠️ add `TextAreas`, a list of 0 or more `EpiTextArea`'s, representing any type of text area on the support.
+  - ⚠️ remove `HasFrame`. Its function is now covered by `TextArea`'s.
+  - ⚠️ remove `HasField`, `FieldSize`, `HasMirror`, `MirrorSize` which with their mock names were temporary placeholders, now covered by `TextAreas`.
+  - ⚠️ remove `InSitu`, `Indoor`, `HasDamnatio`, rather covered by features.
+  - ⚠️ renamed `SupportSize` in `Size`.
+- `EpiTechniquePart`:
+  - add `GrooveType`.
+
 ### 5.0.4
 
 - 2025-02-14: updated packages.

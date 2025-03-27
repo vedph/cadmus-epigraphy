@@ -63,19 +63,15 @@ public sealed class EpiSupportPartTest
         part.OriginalType = "house";
         part.CurrentType = "library";
         part.ObjectType = "window";
-        part.Indoor = true;
-        part.HasField = true;
-        part.HasMirror = true;
+        part.Features = ["damnatio", "indoor"];
 
         part.Counts.Add(new DecoratedCount
         {
             Id = "row",
             Value = 3,
         });
-        part.Features.Add("ruling");
-        part.HasDamnatio = true;
 
-        part.SupportSize = new PhysicalSize
+        part.Size = new PhysicalSize
         {
             W = new PhysicalDimension
             {
@@ -89,8 +85,31 @@ public sealed class EpiSupportPartTest
             }
         };
 
-        List<DataPin> pins = part.GetDataPins(null).ToList();
-        Assert.Equal(14, pins.Count);
+        part.TextAreas =
+        [
+            new EpiTextArea
+            {
+                Type = "added",
+                Layout = "columns",
+                Size = new PhysicalSize
+                {
+                    W = new PhysicalDimension
+                    {
+                        Value = 10,
+                        Unit = "cm"
+                    },
+                    H = new PhysicalDimension
+                    {
+                        Value = 15,
+                        Unit = "cm"
+                    }
+                },
+                FrameType = "double",
+            }
+        ];
+
+        List<DataPin> pins = [.. part.GetDataPins(null)];
+        Assert.Equal(16, pins.Count);
 
         DataPin? pin = pins.Find(p => p.Name == "material" && p.Value == "stone");
         Assert.NotNull(pin);
@@ -116,29 +135,38 @@ public sealed class EpiSupportPartTest
         Assert.NotNull(pin);
         TestHelper.AssertPinIds(part, pin!);
 
-        pin = pins.Find(p => p.Name == "indoor" && p.Value == "1");
-        Assert.NotNull(pin);
-        TestHelper.AssertPinIds(part, pin!);
-
-        pin = pins.Find(p => p.Name == "has-field" && p.Value == "1");
-        Assert.NotNull(pin);
-        TestHelper.AssertPinIds(part, pin!);
-
-        pin = pins.Find(p => p.Name == "has-mirror" && p.Value == "1");
-        Assert.NotNull(pin);
-        TestHelper.AssertPinIds(part, pin!);
-
         // counts
         pin = pins.Find(p => p.Name == "c-row" && p.Value == "3");
         Assert.NotNull(pin);
         TestHelper.AssertPinIds(part, pin!);
 
         // features
-        pin = pins.Find(p => p.Name == "feature" && p.Value == "ruling");
+        pin = pins.Find(p => p.Name == "feature" && p.Value == "damnatio");
         Assert.NotNull(pin);
         TestHelper.AssertPinIds(part, pin!);
 
-        pin = pins.Find(p => p.Name == "has-damnatio" && p.Value == "1");
+        pin = pins.Find(p => p.Name == "feature" && p.Value == "indoor");
+        Assert.NotNull(pin);
+        TestHelper.AssertPinIds(part, pin!);
+
+        // area
+        pin = pins.Find(p => p.Name == "area-type" && p.Value == "added");
+        Assert.NotNull(pin);
+        TestHelper.AssertPinIds(part, pin!);
+
+        pin = pins.Find(p => p.Name == "area-layout" && p.Value == "columns");
+        Assert.NotNull(pin);
+        TestHelper.AssertPinIds(part, pin!);
+
+        pin = pins.Find(p => p.Name == "area-added-w" && p.Value == "10.0");
+        Assert.NotNull(pin);
+        TestHelper.AssertPinIds(part, pin!);
+
+        pin = pins.Find(p => p.Name == "area-added-h" && p.Value == "15.0");
+        Assert.NotNull(pin);
+        TestHelper.AssertPinIds(part, pin!);
+
+        pin = pins.Find(p => p.Name == "frame-type" && p.Value == "double");
         Assert.NotNull(pin);
         TestHelper.AssertPinIds(part, pin!);
 

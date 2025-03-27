@@ -41,63 +41,31 @@ public sealed class EpiSupportPart : PartBase
 
     /// <summary>
     /// Gets or sets the current type of the support structure (e.g. house,
-    /// library, castle, etc.: typically from <c>epi-support-types</c>).
+    /// library, castle, etc.: typically from thesaurus <c>epi-support-types</c>).
     /// </summary>
     public string? CurrentType { get; set; }
 
     /// <summary>
     /// Gets or sets the type of the support object (e.g. column, frame, window,
-    /// etc.): typically from <c>epi-support-object-types</c>.
+    /// etc.): typically from thesaurus  <c>epi-support-object-types</c>.
     /// </summary>
     public string? ObjectType { get; set; }
 
     /// <summary>
-    /// Gets or sets a value indicating whether the support is located
-    /// in its original place (in situ).
+    /// Gets or sets the support features, like in situ, indoor, damnatio,
+    /// etc. Typically from thesaurus <c>epi-support-feats</c>.
     /// </summary>
-    public bool InSitu { get; set; }
-
-    /// <summary>
-    /// Gets or sets a value indicating whether the support is located indoor.
-    /// </summary>
-    public bool Indoor { get; set; }
+    public HashSet<string>? Features { get; set; }
 
     /// <summary>
     /// Gets or sets the support's size.
     /// </summary>
-    public PhysicalSize? SupportSize { get; set; }
+    public PhysicalSize? Size { get; set; }
 
     /// <summary>
-    /// Gets or sets a value indicating whether this support has a writing
-    /// field.
+    /// Gets or sets the text areas present in the support.
     /// </summary>
-    public bool HasField { get; set; }
-
-    /// <summary>
-    /// Gets or sets the writing field's size in the support.
-    /// </summary>
-    public PhysicalSize? FieldSize { get; set; }
-
-    /// <summary>
-    /// Gets or sets a value indicating whether this support has a writing
-    /// mirror.
-    /// </summary>
-    public bool HasMirror { get; set; }
-
-    /// <summary>
-    /// Gets or sets the writing mirror's size in the support.
-    /// </summary>
-    public PhysicalSize? MirrorSize { get; set; }
-
-    /// <summary>
-    /// Gets or sets a value indicating whether the support mirror has a frame.
-    /// </summary>
-    public bool HasFrame { get; set; }
-
-    /// <summary>
-    /// Gets or sets a short description of the support mirror frame.
-    /// </summary>
-    public string? Frame { get; set; }
+    public List<EpiTextArea>? TextAreas { get; set; }
 
     /// <summary>
     /// Gets or sets decorated counts for this support. These can be used to
@@ -105,18 +73,6 @@ public sealed class EpiSupportPart : PartBase
     /// Typically from <c>epi-support-count-types</c>.
     /// </summary>
     public List<DecoratedCount> Counts { get; set; } = [];
-
-    /// <summary>
-    /// Gets or sets the support features (e.g. monogram, single letter, etc.),
-    /// typically from <c>epi-support-features</c>.
-    /// </summary>
-    public HashSet<string> Features { get; set; } = [];
-
-    /// <summary>
-    /// Gets or sets a value indicating whether this support is damaged by
-    /// the presence of a damnatio memoriae.
-    /// </summary>
-    public bool HasDamnatio { get; set; }
 
     /// <summary>
     /// Gets or sets a generic note about the support.
@@ -165,25 +121,47 @@ public sealed class EpiSupportPart : PartBase
         builder.AddValue("original-type", OriginalType);
         builder.AddValue("current-type", CurrentType);
         builder.AddValue("object-type", ObjectType);
-        if (InSitu) builder.AddValue("insitu", InSitu);
-        if (Indoor) builder.AddValue("indoor", Indoor);
 
-        if (HasField) builder.AddValue("has-field", true);
-        if (HasMirror) builder.AddValue("has-mirror", true);
-        if (HasFrame) builder.AddValue("has-frame", true);
+        // size
+        if (Size != null) AddSizePins("support-", Size, builder);
 
-        if (SupportSize != null) AddSizePins("support-", SupportSize, builder);
-        if (FieldSize != null) AddSizePins("field-", FieldSize, builder);
-        if (MirrorSize != null) AddSizePins("mirror-", MirrorSize, builder);
-        if (HasDamnatio) builder.AddValue("has-damnatio", true);
+        // features
+        if (Features != null) builder.AddValues("feature", Features);
+
+        // text areas
+        if (TextAreas?.Count > 0)
+        {
+            HashSet<string> areaEids = [];
+            HashSet<string> areaTypes = [];
+            HashSet<string> areaLayouts = [];
+            HashSet<string> areaFeats = [];
+            HashSet<string> frameTypes = [];
+
+            foreach (EpiTextArea area in TextAreas)
+            {
+                if (!string.IsNullOrEmpty(area.Eid)) areaEids.Add(area.Eid);
+
+                areaTypes.Add(area.Type);
+                if (!string.IsNullOrEmpty(area.Layout))
+                    areaLayouts.Add(area.Layout);
+
+                if (area.Features != null) areaFeats.UnionWith(area.Features);
+                if (area.Size != null)
+                    AddSizePins($"area-{area.Type}-", area.Size, builder);
+                if (!string.IsNullOrEmpty(area.FrameType))
+                    frameTypes.Add(area.FrameType);
+            }
+
+            if (areaEids.Count > 0) builder.AddValues("area-eid", areaEids);
+            if (areaTypes.Count > 0) builder.AddValues("area-type", areaTypes);
+            if (areaLayouts.Count > 0) builder.AddValues("area-layout", areaLayouts);
+            if (areaFeats.Count > 0) builder.AddValues("area-feature", areaFeats);
+            if (frameTypes.Count > 0) builder.AddValues("frame-type", frameTypes);
+        }
 
         // counts
         foreach (DecoratedCount count in Counts)
             builder.AddValue("c-" + count.Id, count.Value);
-
-        // features
-        foreach (string feature in Features)
-            builder.AddValue("feature", feature);
 
         return builder.Build(this);
     }
@@ -214,21 +192,6 @@ public sealed class EpiSupportPart : PartBase
             new DataPinDefinition(DataPinValueType.String,
                 "object-type",
                 "The type of the support object."),
-            new DataPinDefinition(DataPinValueType.Boolean,
-                "insitu",
-                "True when support is in situ."),
-            new DataPinDefinition(DataPinValueType.Boolean,
-                "indoor",
-                "True when support is indoor."),
-            new DataPinDefinition(DataPinValueType.Boolean,
-                "has-field",
-                "True when support has writing field."),
-            new DataPinDefinition(DataPinValueType.Boolean,
-                "has-mirror",
-                "True when support has writing mirror."),
-            new DataPinDefinition(DataPinValueType.Boolean,
-                "has-frame",
-                "True when support mirror has a frame."),
             new DataPinDefinition(DataPinValueType.Decimal,
                 "support-w",
                 "The width of the support."),
@@ -238,27 +201,38 @@ public sealed class EpiSupportPart : PartBase
             new DataPinDefinition(DataPinValueType.Decimal,
                 "support-d",
                 "The depth of the support."),
+            new DataPinDefinition(DataPinValueType.String,
+                "area-type",
+                "The type of the text area.",
+                "M"),
+            new DataPinDefinition(DataPinValueType.String,
+                "frame-type",
+                "The type of the text area frame.",
+                "M"),
+            new DataPinDefinition(DataPinValueType.String,
+                "area-eid",
+                "The text area EID.",
+                "M"),
+            new DataPinDefinition(DataPinValueType.String,
+                "area-layout",
+                "The layout of the text area.",
+                "M"),
+            new DataPinDefinition(DataPinValueType.String,
+                "area-feature",
+                "A feature of the text area.",
+                "M"),
             new DataPinDefinition(DataPinValueType.Decimal,
-                "field-w",
-                "The width of the writing field."),
+                "area-TYPE-w",
+                "The width of the specified text area TYPE.",
+                "M"),
             new DataPinDefinition(DataPinValueType.Decimal,
-                "field-h",
-                "The height of the writing field."),
+                "area-TYPE-h",
+                "The height of the specified text area TYPE.",
+                "M"),
             new DataPinDefinition(DataPinValueType.Decimal,
                 "field-d",
-                "The depth of the writing field."),
-            new DataPinDefinition(DataPinValueType.Decimal,
-                "mirror-w",
-                "The width of the writing mirror."),
-            new DataPinDefinition(DataPinValueType.Decimal,
-                "mirror-h",
-                "The height of the writing mirror."),
-            new DataPinDefinition(DataPinValueType.Decimal,
-                "mirror-d",
-                "The depth of the writing mirror."),
-            new DataPinDefinition(DataPinValueType.Boolean,
-                "has-damnatio",
-                "True when support has a damnatio memoriae."),
+                "The depth of the specified text area TYPE.",
+                "M"),
             new DataPinDefinition(DataPinValueType.Integer,
                 "c-NAME",
                 "A count of NAME in this support.",
@@ -288,7 +262,7 @@ public sealed class EpiSupportPart : PartBase
 
         sb.Append(": ").Append(CurrentType).Append(", ").Append(OriginalType);
 
-        if (SupportSize != null) sb.Append(" - ").Append(SupportSize);
+        if (Size != null) sb.Append(" - ").Append(Size);
 
         return sb.ToString();
     }

@@ -29,6 +29,7 @@ public sealed class EpiTechniquePartSeeder : PartSeederBase
         ArgumentNullException.ThrowIfNull(item);
 
         EpiTechniquePart part = new Faker<EpiTechniquePart>()
+           .RuleFor(p => p.GrooveType, f => f.PickRandom("u-shaped", "v-shaped"))
            .RuleFor(p => p.Techniques, f => [f.PickRandom("incision", "engraving")])
            .RuleFor(p => p.Tools, f => [f.PickRandom("chisel", "ink")])
            .RuleFor(p => p.Note, f => f.Random.Bool(0.25f) ? f.Lorem.Sentence() : null)
