@@ -1,18 +1,16 @@
 ﻿using Cadmus.Core;
-using Cadmus.Refs.Bricks;
 using Cadmus.Seed.Epigraphy.Parts;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 
 namespace Cadmus.Epigraphy.Parts.Test;
 
-public sealed class EpiWritingPartTest
+public sealed class EpiScriptsPartTest
 {
-    private static EpiWritingPart GetPart()
+    private static EpiScriptsPart GetPart()
     {
-        EpiWritingPartSeeder seeder = new();
+        EpiScriptsPartSeeder seeder = new();
         IItem item = new Item
         {
             FacetId = "default",
@@ -22,12 +20,12 @@ public sealed class EpiWritingPartTest
             Title = "Test Item",
             SortKey = ""
         };
-        return (EpiWritingPart)seeder.GetPart(item, null, null)!;
+        return (EpiScriptsPart)seeder.GetPart(item, null, null)!;
     }
 
-    private static EpiWritingPart GetEmptyPart()
+    private static EpiScriptsPart GetEmptyPart()
     {
-        return new EpiWritingPart
+        return new EpiScriptsPart
         {
             ItemId = Guid.NewGuid().ToString(),
             RoleId = "some-role",
@@ -39,10 +37,10 @@ public sealed class EpiWritingPartTest
     [Fact]
     public void Part_Is_Serializable()
     {
-        EpiWritingPart part = GetPart();
+        EpiScriptsPart part = GetPart();
 
         string json = TestHelper.SerializePart(part);
-        EpiWritingPart part2 = TestHelper.DeserializePart<EpiWritingPart>(json)!;
+        EpiScriptsPart part2 = TestHelper.DeserializePart<EpiScriptsPart>(json)!;
 
         Assert.Equal(part.Id, part2.Id);
         Assert.Equal(part.TypeId, part2.TypeId);
@@ -55,13 +53,16 @@ public sealed class EpiWritingPartTest
     [Fact]
     public void GetDataPins_Ok()
     {
-        EpiWritingPart part = GetEmptyPart();
-        part.System = "latn";
-        part.Script = "merchant";
-        part.Casing = "uppercase";
-        part.Features.Add("ligatures");
+        EpiScriptsPart part = GetEmptyPart();
+        part.Scripts.Add(new EpiScript
+        {
+            System = "latn",
+            Script = "merchant",
+            Casing = "uppercase",
+            Features = ["ligatures"]
+        });
 
-        List<DataPin> pins = part.GetDataPins(null).ToList();
+        List<DataPin> pins = [.. part.GetDataPins(null)];
         Assert.Equal(4, pins.Count);
 
         DataPin? pin = pins.Find(p => p.Name == "system" && p.Value == "latn");

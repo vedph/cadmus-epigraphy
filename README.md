@@ -1,7 +1,7 @@
 # Cadmus Epigraphy
 
 - parts:
-  - [EpiWritingPart](docs/epi-writing.md)
+  - [EpiScriptsPart](docs/epi-scripts.md)
   - [EpiSupportPart](docs/epi-support.md)
   - [EpiFormulaPatternsPart](docs/epi-formula-patterns.md)
   - [EpiSignsPart](docs/epi-signs.md)
@@ -23,7 +23,7 @@ For instance, an inscription item might include parts like:
 - `HistoricalDatePart`: date.
 - [EpiSupportPart](docs/epi-support.md)
 - [EpiSupportFrrPart](docs/epi-support-frr.md)
-- [EpiWritingPart](docs/epi-writing.md)
+- [EpiScriptsPart](docs/epi-scripts.md)
 - [EpiSignsPart](docs/epi-signs.md)
 - [EpiTechniquePart](docs/epi-technique.md)
 
@@ -55,7 +55,15 @@ Also, you might want to add epigraphic formula items, having an [EpiFormulaPatte
 
 ## History
 
-⚠️ Breaking model changes for support:
+### 7.0.1
+
+⚠️ Breaking model changes:
+
+- `EpiWritingPart`:
+  - ⚠️ replaced by `EpiScriptsPart` having the same model of `EpiWritingPart` for each item of its `Scripts` array. So this is a fully compatible model change, but it allows to have multiple scripts in the same part.
+- removed legacy code.
+
+### 6.0.0
 
 - `EpiSupportPart`:
   - ⚠️ add `TextAreas`, a list of 0 or more `EpiTextArea`'s, representing any type of text area on the support.

@@ -28,27 +28,24 @@ static internal class TestHelper
     {
         // map
         TagAttributeToTypeMap map = new();
-        map.Add(new[]
-        {
+        map.Add(
+        [
             // Cadmus.Core
             typeof(StandardItemSortKeyBuilder).Assembly,
             // Cadmus.Epigraphy.Parts
-            typeof(EpiSupportOldPart).Assembly
-        });
+            typeof(EpiSupportPart).Assembly
+        ]);
 
         return new HostBuilder().ConfigureServices((hostContext, services) =>
         {
             PartSeederFactory.ConfigureServices(services,
                 new StandardPartTypeProvider(map),
-                new[]
-                {
-                    // Cadmus.Seed.Epigraphy.Parts
-                    typeof(EpiSupportOldPartSeeder).Assembly
-                });
-            })
-            // extension method from Fusi library
-            .AddInMemoryJson(config)
-            .Build();
+                // Cadmus.Seed.Epigraphy.Parts
+                typeof(EpiSupportPartSeeder).Assembly);
+        })
+        // extension method from Fusi library
+        .AddInMemoryJson(config)
+        .Build();
     }
 
     static public PartSeederFactory GetFactory()

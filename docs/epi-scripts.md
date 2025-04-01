@@ -1,4 +1,17 @@
-# Epigraphic Writing
+# Epigraphic Scripts
+
+🔑 `it.vedph.epigraphy.scripts`.
+
+- scripts (`EpiScript[]`):
+  - system (`string` 📚 `epi-script-systems`, usually ISO 15924 lowercase)
+  - script (`string` 📚 `epi-scripts`)
+  - casing (`string` 📚 `epi-script-casings`)
+  - features (`string[]` 📚 `epi-script-features`)
+  - note (`string`)
+
+This model is fully compatible with the previous one, except that it allows multiple instances of it. The part ID and names changed accordingly. Migration to this model will require patching the existing database.
+
+## Old Part
 
 🔑 `it.vedph.epigraphy.writing`.
 
@@ -28,7 +41,7 @@ Languages too can be moved into a [categories part](https://github.com/vedph/cad
 
 Finally, the presence of poetry can be just a feature; and metres have been removed, reserving them to a more specialized part which might well include more data about the metrical scheme and relevant prosodical features, and as such is not even limited to the epigraphic realm.
 
-## Old Model
+## Oldest Model
 
 🔑 `it.vedph.epigraphy.writing.old`.
 

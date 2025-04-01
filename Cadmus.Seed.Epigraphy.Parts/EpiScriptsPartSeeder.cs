@@ -7,13 +7,24 @@ using System;
 namespace Cadmus.Seed.Epigraphy.Parts;
 
 /// <summary>
-/// Seeder for <see cref="EpiWritingPart"/>.
-/// Tag: <c>seed.it.vedph.epigraphy.writing</c>.
+/// Seeder for <see cref="EpiScriptsPart"/>.
+/// Tag: <c>seed.it.vedph.epigraphy.scripts</c>.
 /// </summary>
 /// <seealso cref="PartSeederBase" />
-[Tag("seed.it.vedph.epigraphy.writing")]
-public sealed class EpiWritingPartSeeder : PartSeederBase
+[Tag("seed.it.vedph.epigraphy.scripts")]
+public sealed class EpiScriptsPartSeeder : PartSeederBase
 {
+    private static EpiScript GetEpiScript()
+    {
+        return new Faker<EpiScript>()
+           .RuleFor(p => p.System, f => f.PickRandom("latn", "grek"))
+           .RuleFor(p => p.Script, f => f.PickRandom("merchant", "gothic"))
+           .RuleFor(p => p.Casing, f => f.PickRandom("uppercase", "lowercase"))
+           .RuleFor(p => p.Features, f => [f.PickRandom("abbreviations", "ligatures")])
+           .RuleFor(p => p.Note, f => f.Random.Bool(0.25f) ? f.Lorem.Sentence() : null)
+           .Generate();
+    }
+
     /// <summary>
     /// Creates and seeds a new part.
     /// </summary>
@@ -28,13 +39,8 @@ public sealed class EpiWritingPartSeeder : PartSeederBase
     {
         ArgumentNullException.ThrowIfNull(item);
 
-        EpiWritingPart part = new Faker<EpiWritingPart>()
-           .RuleFor(p => p.System, f => f.PickRandom("latn", "grek"))
-           .RuleFor(p => p.Script, f => f.PickRandom("merchant", "gothic"))
-           .RuleFor(p => p.Casing, f => f.PickRandom("uppercase", "lowercase"))
-           .RuleFor(p => p.Features, f => [f.PickRandom("abbreviations", "ligatures")])
-           .RuleFor(p => p.Note, f => f.Random.Bool(0.25f) ? f.Lorem.Sentence() : null)
-           .Generate();
+        EpiScriptsPart part = new();
+        part.Scripts.Add(GetEpiScript());
         SetPartMetadata(part, roleId, item);
 
         return part;
