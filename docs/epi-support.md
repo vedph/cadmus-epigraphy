@@ -3,10 +3,6 @@
 🔑 `it.vedph.epigraphy.support`.
 
 - material\* (`string` 📚 `epi-support-materials`)
-- originalFn (`string` 📚 `epi-support-functions`)
-- currentFn (`string` 📚 `epi-support-functions`)
-- originalType (`string` 📚 `epi-support-types`)
-- currentType (`string` 📚 `epi-support-types`)
 - objectType (`string` 📚 `epi-support-object-types`)
 - features (📚 `epi-support-features`): e.g. indoor, damnatio, in-situ, etc.
 - size (🧱 [PhysicalSize](https://github.com/vedph/cadmus-bricks/blob/master/docs/physical-size.md)):

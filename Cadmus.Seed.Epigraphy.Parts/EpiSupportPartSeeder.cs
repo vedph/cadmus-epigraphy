@@ -38,16 +38,9 @@ public sealed class EpiSupportPartSeeder : PartSeederBase
     {
         ArgumentNullException.ThrowIfNull(item);
 
-        string[] fnn = ["private", "public"];
-        string[] types = ["house", "library", "castle"];
-
         EpiSupportPart part = new Faker<EpiSupportPart>()
            .RuleFor(p => p.Material,
                     f => f.PickRandom("concrete", "wood", "stone"))
-           .RuleFor(p => p.OriginalFn, f => f.PickRandom(fnn))
-           .RuleFor(p => p.CurrentFn, f => f.PickRandom(fnn))
-           .RuleFor(p => p.OriginalType, f => f.PickRandom(types))
-           .RuleFor(p => p.CurrentType, f => f.PickRandom(types))
            .RuleFor(p => p.ObjectType, f => f.PickRandom("slab", "column", "wall"))
            .RuleFor(p => p.Features, f => new HashSet<string>(
                [f.PickRandom("in-situ", "indoor")]))

@@ -58,10 +58,6 @@ public sealed class EpiSupportPartTest
     {
         EpiSupportPart part = GetEmptyPart();
         part.Material = "stone";
-        part.OriginalFn = "house";
-        part.CurrentFn = "street";
-        part.OriginalType = "house";
-        part.CurrentType = "library";
         part.ObjectType = "window";
         part.Features = ["damnatio", "indoor"];
 

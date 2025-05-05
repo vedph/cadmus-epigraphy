@@ -22,30 +22,6 @@ public sealed class EpiSupportPart : PartBase
     public string Material { get; set; } = "";
 
     /// <summary>
-    /// Gets or sets the original function of the support structure
-    /// (e.g. private, public, etc.: typically from <c>epi-support-functions</c>).
-    /// </summary>
-    public string? OriginalFn { get; set; }
-
-    /// <summary>
-    /// Gets or sets the current function of the support structure.
-    /// (e.g. private, public, etc.: typically from <c>epi-support-functions</c>).
-    /// </summary>
-    public string? CurrentFn { get; set; }
-
-    /// <summary>
-    /// Gets or sets the original type of the support structure (e.g. house,
-    /// library, castle, etc.: typically from <c>epi-support-types</c>).
-    /// </summary>
-    public string? OriginalType { get; set; }
-
-    /// <summary>
-    /// Gets or sets the current type of the support structure (e.g. house,
-    /// library, castle, etc.: typically from thesaurus <c>epi-support-types</c>).
-    /// </summary>
-    public string? CurrentType { get; set; }
-
-    /// <summary>
     /// Gets or sets the type of the support object (e.g. column, frame, window,
     /// etc.): typically from thesaurus  <c>epi-support-object-types</c>.
     /// </summary>
@@ -116,10 +92,6 @@ public sealed class EpiSupportPart : PartBase
         DataPinBuilder builder = new();
 
         builder.AddValue("material", Material);
-        builder.AddValue("original-fn", OriginalFn);
-        builder.AddValue("current-fn", CurrentFn);
-        builder.AddValue("original-type", OriginalType);
-        builder.AddValue("current-type", CurrentType);
         builder.AddValue("object-type", ObjectType);
 
         // size
@@ -177,18 +149,6 @@ public sealed class EpiSupportPart : PartBase
             new DataPinDefinition(DataPinValueType.String,
                 "material",
                 "The material of the support."),
-            new DataPinDefinition(DataPinValueType.String,
-                "original-fn",
-                "The original function of the support."),
-            new DataPinDefinition(DataPinValueType.String,
-                "current-fn",
-                "The current function of the support."),
-            new DataPinDefinition(DataPinValueType.String,
-                "original-type",
-                "The original type of the support object."),
-            new DataPinDefinition(DataPinValueType.String,
-                "current-type",
-                "The current type of the support object."),
             new DataPinDefinition(DataPinValueType.String,
                 "object-type",
                 "The type of the support object."),
@@ -256,11 +216,7 @@ public sealed class EpiSupportPart : PartBase
 
         sb.Append("[EpiSupport]").Append(' ').Append(Material);
 
-        if (!string.IsNullOrEmpty(CurrentFn)) sb.Append(": ").Append(CurrentFn);
-        if (!string.IsNullOrEmpty(OriginalFn))
-            sb.Append(" (").Append(OriginalFn).Append(')');
-
-        sb.Append(": ").Append(CurrentType).Append(", ").Append(OriginalType);
+        if (!string.IsNullOrEmpty(ObjectType)) sb.Append(": ").Append(ObjectType);
 
         if (Size != null) sb.Append(" - ").Append(Size);
 

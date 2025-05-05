@@ -11,17 +11,17 @@
 		<Product>Cadmus</Product>
 		<Description>Cadmus epigraphic component seeders.</Description>
 		<NeutralLanguage>en-US</NeutralLanguage>
-		<Version>7.0.1</Version>
+		<Version>8.0.0</Version>
 		<PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
 		<Copyright>by Daniele Fusi</Copyright>
 		<PackageTags>Cadmus;epigraphy</PackageTags>
-		<FileVersion>7.0.1</FileVersion>
-		<AssemblyVersion>7.0.1</AssemblyVersion>
+		<FileVersion>8.0.0</FileVersion>
+		<AssemblyVersion>8.0.0</AssemblyVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Cadmus.Refs.Bricks" Version="6.0.0" />
-		<PackageReference Include="Cadmus.Seed" Version="8.0.6" />
+		<PackageReference Include="Cadmus.Refs.Bricks" Version="6.0.2" />
+		<PackageReference Include="Cadmus.Seed" Version="8.0.8" />
 	</ItemGroup>
 
 	<ItemGroup>
