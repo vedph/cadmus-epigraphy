@@ -23,7 +23,7 @@
   - frameType (`string`, 📚 `epi-support-text-area-frame-types`)
   - frameDescription (`string`)
   - note (`string`)
-- counts (🧱 [DecoratedCount[]](https://github.com/vedph/cadmus-bricks/blob/master/docs/decorated-count.md), 📚 `epi-support-count-types`): e.g. rows, columns, etc.
+- counts (🧱 [DecoratedCount[]](https://github.com/vedph/cadmus-bricks/blob/master/docs/decorated-count.md), 📚 `epi-support-count-types`, 📚 `epi-support-count-tags`): e.g. rows, columns, etc.
 - note (`string`, 5000)
 
 ## Old Model 2 (v5)
