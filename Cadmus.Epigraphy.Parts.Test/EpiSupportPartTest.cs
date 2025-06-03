@@ -4,7 +4,6 @@ using Cadmus.Refs.Bricks;
 using Cadmus.Seed.Epigraphy.Parts;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 
 namespace Cadmus.Epigraphy.Parts.Test;
@@ -105,25 +104,9 @@ public sealed class EpiSupportPartTest
         ];
 
         List<DataPin> pins = [.. part.GetDataPins(null)];
-        Assert.Equal(16, pins.Count);
+        Assert.Equal(12, pins.Count);
 
         DataPin? pin = pins.Find(p => p.Name == "material" && p.Value == "stone");
-        Assert.NotNull(pin);
-        TestHelper.AssertPinIds(part, pin!);
-
-        pin = pins.Find(p => p.Name == "original-fn" && p.Value == "house");
-        Assert.NotNull(pin);
-        TestHelper.AssertPinIds(part, pin!);
-
-        pin = pins.Find(p => p.Name == "current-fn" && p.Value == "street");
-        Assert.NotNull(pin);
-        TestHelper.AssertPinIds(part, pin!);
-
-        pin = pins.Find(p => p.Name == "original-type" && p.Value == "house");
-        Assert.NotNull(pin);
-        TestHelper.AssertPinIds(part, pin!);
-
-        pin = pins.Find(p => p.Name == "current-type" && p.Value == "library");
         Assert.NotNull(pin);
         TestHelper.AssertPinIds(part, pin!);
 

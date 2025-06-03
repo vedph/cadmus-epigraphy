@@ -55,6 +55,8 @@ Also, you might want to add epigraphic formula items, having an [EpiFormulaPatte
 
 ## History
 
+- 2025-06-03: updated test packages.
+
 ### 8.0.0
 
 - ⚠️ minor breaking model changes in `EpiSupportPart`: removed `OriginalFn`, `CurrentFn` (`epi-support-functions`), `OriginalType`, `CurrentType` (`epi-support-types`). These refer to the housing structure and are better handled in categories parts with different roles.
