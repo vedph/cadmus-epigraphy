@@ -55,6 +55,10 @@ Also, you might want to add epigraphic formula items, having an [EpiFormulaPatte
 
 ## History
 
+### 9.0.0
+
+- 2025-11-23: ⚠️ upgraded to NET 10.
+
 ### 8.0.2
 
 - 2025-10-08: updated packages.
