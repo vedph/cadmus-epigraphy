@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Pack.bat" />
+    <File Path="Push.bat" />
+    <File Path="PushLocal.bat" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="Cadmus.Epigraphy.Parts.Test/Cadmus.Epigraphy.Parts.Test.csproj" />
+  <Project Path="Cadmus.Epigraphy.Parts/Cadmus.Epigraphy.Parts.csproj" />
+  <Project Path="Cadmus.Seed.Epigraphy.Parts.Test/Cadmus.Seed.Epigraphy.Parts.Test.csproj" />
+  <Project Path="Cadmus.Seed.Epigraphy.Parts/Cadmus.Seed.Epigraphy.Parts.csproj" />
+</Solution>
