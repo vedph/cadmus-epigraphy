@@ -1,0 +1,62 @@
+{
+  "parts": {
+    "it.vedph.epigraphy.formula-patterns": {
+      "thesauriIds": [
+        "epi-formula-pattern-languages",
+        "epi-formula-pattern-tags",
+        "epi-formula-token-tags"
+      ]
+    },
+    "it.vedph.epigraphy.scripts": {
+      "thesauriIds": [
+        "epi-script-systems",
+        "epi-scripts",
+        "epi-script-casings",
+        "epi-script-features"
+      ]
+    },
+    "it.vedph.epigraphy.signs": {
+      "thesauriIds": [
+        "epi-signs-features",
+        "epi-signs-measure-names",
+        "physical-size-units",
+        "physical-size-dim-tags"
+      ]
+    },
+    "it.vedph.epigraphy.support-frr": {
+      "thesauriIds": [
+        "physical-size-tags",
+        "physical-size-units",
+        "physical-size-dim-tags"
+      ]
+    },
+    "it.vedph.epigraphy.support": {
+      "thesauriIds": [
+        "epi-support-materials",
+        "epi-support-object-types",
+        "epi-support-features",
+        "physical-size-tags",
+        "physical-size-units",
+        "physical-size-dim-tags",
+        "epi-support-text-area-types",
+        "epi-support-text-area-layouts",
+        "epi-support-text-area-features",
+        "epi-support-text-area-frame-types",
+        "epi-support-count-types",
+        "epi-support-count-tags"
+      ]
+    },
+    "it.vedph.epigraphy.technique": {
+      "thesauriIds": [
+        "epi-technique-groove-types",
+        "epi-technique-types",
+        "epi-technique-tools"
+      ]
+    }
+  },
+  "fragments": {
+    "fr.it.vedph.epigraphy.ligatures": {
+      "thesauriIds": ["epi-ligature-types"]
+    }
+  }
+}
