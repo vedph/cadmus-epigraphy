@@ -4,7 +4,7 @@ prompt
 set nu=C:\Exe\nuget.exe
 set src=-Source https://api.nuget.org/v3/index.json
 
-%nu% push .\Cadmus.Epigraphy.Parts\bin\Debug\*.nupkg %src%
-%nu% push .\Cadmus.Seed.Epigraphy.Parts\bin\Debug\*.nupkg %src%
+%nu% push .\Cadmus.Epigraphy.Parts\bin\Release\*.nupkg %src%
+%nu% push .\Cadmus.Seed.Epigraphy.Parts\bin\Release\*.nupkg %src%
 echo COMPLETED
 echo on

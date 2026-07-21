@@ -1,12 +1,13 @@
 <Solution>
   <Folder Name="/Solution Items/">
+    <File Path="CHANGELOG.md" />
     <File Path="Pack.bat" />
     <File Path="Push.bat" />
     <File Path="PushLocal.bat" />
     <File Path="README.md" />
+    <Project Path="Cadmus.Epigraphy.Parts/Cadmus.Epigraphy.Parts.csproj" />
   </Folder>
   <Project Path="Cadmus.Epigraphy.Parts.Test/Cadmus.Epigraphy.Parts.Test.csproj" />
-  <Project Path="Cadmus.Epigraphy.Parts/Cadmus.Epigraphy.Parts.csproj" />
   <Project Path="Cadmus.Seed.Epigraphy.Parts.Test/Cadmus.Seed.Epigraphy.Parts.Test.csproj" />
   <Project Path="Cadmus.Seed.Epigraphy.Parts/Cadmus.Seed.Epigraphy.Parts.csproj" />
 </Solution>
