@@ -1,5 +1,11 @@
 # History
 
+## 9.0.6
+
+- 2026-09-27:
+  - updated packages.
+  - migrated tests to MTP.
+
 ## 9.0.5
 
 - 2026-08-30: updated packages.
